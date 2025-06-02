@@ -24,7 +24,7 @@ const AdminLogin = () => {
 
       if (res.ok) {
         localStorage.setItem("adminToken", password);
-        navigate("/admin-dashboard");
+        navigate("/admin-dashboard/nominations");
       } else {
         setError(data.message || "Incorrect password. Please try again.");
       }

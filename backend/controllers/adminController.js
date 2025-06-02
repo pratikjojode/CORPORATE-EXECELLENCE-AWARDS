@@ -3,7 +3,6 @@ dotenv.config();
 
 export const adminLogin = (req, res) => {
   const { password } = req.body;
-  console.log("Received password:", JSON.stringify(password));
 
   if (password === process.env.ADMIN_PASSWORD) {
     return res.status(200).json({ message: "Login successful" });

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import "../Styles/Dashboard.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLogout = () => {
@@ -16,14 +16,19 @@ const Dashboard = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const isActive = (path) => location.pathname.startsWith(path);
+
   return (
     <div className="dashboard-container">
       <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <h2>Corporate Excellence Awards</h2>
+        <h2 className="awards">Corporate Excellence Awards</h2>
         <nav>
           <ul>
             <li>
               <button
+                className={
+                  isActive("/admin-dashboard/nominations") ? "active" : ""
+                }
                 onClick={() => {
                   navigate("/admin-dashboard/nominations");
                   setIsSidebarOpen(false);
@@ -34,6 +39,9 @@ const Dashboard = () => {
             </li>
             <li>
               <button
+                className={
+                  isActive("/admin-dashboard/attendance") ? "active" : ""
+                }
                 onClick={() => {
                   navigate("/admin-dashboard/attendance");
                   setIsSidebarOpen(false);
@@ -54,7 +62,7 @@ const Dashboard = () => {
           <button className="hamburger-menu" onClick={toggleSidebar}>
             ☰
           </button>
-          <h1 className="main-header-title">Admin Dashboard</h1>
+          <h1 className="main-header-title"> Jobizza Admin Dashboard</h1>
         </div>
         <Outlet />
       </main>
