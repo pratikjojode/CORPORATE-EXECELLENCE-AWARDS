@@ -462,3 +462,22 @@ button:focus-visible {
   display: block;
   border-radius: 50%;
 }
+.developer-names {
+  text-align: center; /* Center the text */
+  margin-top: 20px; /* Space above this section */
+  font-size: 0.88em; /* Slightly smaller font size */
+  color: #6a7c8e; /* Muted text color */
+  line-height: 1.5; /* Improve readability */
+  padding: 5px 0; /* A little padding top/bottom */
+}
+
+.developer-names p {
+  margin: 0; /* Remove default paragraph margins */
+  padding: 2px 0; /* Small vertical padding for each line */
+}
+
+/* Optional: Make names slightly bolder */
+.developer-names p strong {
+  font-weight: 600; /* A bit bolder than normal */
+  color: #4a5a6a; /* Slightly darker color for names */
+}

@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import "../Styles/Dashboard.css";
 import logo from "../assets/corporate2.jpg";
+import DashboardFooter from "./DashboardFooter";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
@@ -19,11 +31,24 @@ const Dashboard = () => {
 
   const isActive = (path) => location.pathname.startsWith(path);
 
+  const formatTime = (dateToFormat) => {
+    return dateToFormat.toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+  };
+
   return (
     <>
       <div className="dashboard-container">
         <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-          <img className="logo" src={logo} />
+          <img
+            className="logo"
+            src={logo}
+            alt="Corporate Excellence Awards Logo"
+          />
           <h2 className="awards">Corporate Excellence Awards</h2>
           <nav>
             <ul>
@@ -58,6 +83,10 @@ const Dashboard = () => {
           <button onClick={handleLogout} className="logout-button">
             Logout
           </button>
+          <div className="developer-names">
+            <p>Developed by: **Pratik Jojode**</p>
+            <p>Co-developed by: **Sanskar Tolumbia**</p>
+          </div>
         </aside>
 
         <main className="main-content">
@@ -66,11 +95,16 @@ const Dashboard = () => {
               ☰
             </button>
 
-            <h1 className="main-header-title"> Jobizza Admin Dashboard</h1>
+            <div className="header-title-and-time">
+              <h1 className="main-header-title">
+                Jobizza Admin Dashboard || {formatTime(currentTime)}
+              </h1>
+            </div>
           </div>
           <Outlet />
         </main>
       </div>
+      <DashboardFooter />
     </>
   );
 };
