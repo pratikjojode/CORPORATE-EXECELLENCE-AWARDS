@@ -20,10 +20,70 @@ const headers = [
   "Declaration",
 ];
 
-// Helper: Truncate long content for table view
-const truncate = (str, n = 120) => {
-  if (typeof str !== "string") return str;
-  return str.length > n ? str.slice(0, n - 3) + "..." : str;
+// Helper: Smart truncation based on field type and view
+const smartTruncate = (content, fieldName, viewType = "table") => {
+  if (typeof content !== "string") return content || "N/A";
+
+  const limits = {
+    table: {
+      description: 50,
+      declaration: 30,
+      awards: 40,
+      default: 35,
+    },
+    grid: {
+      description: 100,
+      declaration: 60,
+      awards: 80,
+      default: 70,
+    },
+    modal: {
+      description: Infinity,
+      declaration: Infinity,
+      awards: Infinity,
+      default: Infinity,
+    },
+  };
+
+  let limit;
+  if (fieldName.includes("description")) {
+    limit = limits[viewType].description;
+  } else if (fieldName.includes("Declaration")) {
+    limit = limits[viewType].declaration;
+  } else if (fieldName.includes("Awards")) {
+    limit = limits[viewType].awards;
+  } else {
+    limit = limits[viewType].default;
+  }
+
+  if (content.length <= limit) return content;
+  return content.slice(0, limit - 3) + "...";
+};
+
+// Helper: Format URL to ensure it has proper protocol
+const formatUrl = (url) => {
+  if (!url || typeof url !== "string") return null;
+
+  const cleanUrl = url.trim();
+  if (!cleanUrl) return null;
+
+  // If URL already has a protocol, return as is
+  if (cleanUrl.match(/^https?:\/\//i)) {
+    return cleanUrl;
+  }
+
+  // If URL starts with www, add https
+  if (cleanUrl.match(/^www\./i)) {
+    return `https://${cleanUrl}`;
+  }
+
+  // If it looks like a domain (contains a dot and no spaces), add https
+  if (cleanUrl.includes(".") && !cleanUrl.includes(" ")) {
+    return `https://${cleanUrl}`;
+  }
+
+  // Otherwise, return null (invalid URL)
+  return null;
 };
 
 const PAGE_SIZE = 10; // Number of nominations per page
@@ -44,13 +104,16 @@ const Nomination = () => {
   const [industryFilter, setIndustryFilter] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
   const [awardsTypeFilter, setAwardsTypeFilter] = useState("");
+  const [designationFilter, setDesignationFilter] = useState("");
+  const [organizationFilter, setOrganizationFilter] = useState("");
 
   useEffect(() => {
     const fetchNomination = async () => {
       try {
         const response = await axios.get("/api/v1/form/corporateFormResponse");
         setNominationData(response.data);
-      } catch {
+      } catch (err) {
+        console.error("Error fetching nomination data:", err);
         setError("Failed to load nomination data. Please try again later.");
       } finally {
         setLoading(false);
@@ -66,6 +129,41 @@ const Nomination = () => {
   const locationOptions = [
     ...new Set(nominationData.map((n) => n["Location"]).filter(Boolean)),
   ];
+  const designationOptions = [
+    ...new Set(
+      nominationData
+        .map((n) => n["Designation (if individual) "])
+        .filter(Boolean)
+    ),
+  ];
+  const organizationOptions = [
+    ...new Set(
+      nominationData
+        .map((n) => n["Organization Name (if individual) "])
+        .filter(Boolean)
+    ),
+  ];
+
+  // Dynamic awards type options based on actual data
+  const getAwardsTypeOptions = () => {
+    const options = [];
+    const hasIndividualAwards = nominationData.some(
+      (n) =>
+        n["Individual / HR Awards"] && n["Individual / HR Awards"].trim() !== ""
+    );
+    const hasCorporateAwards = nominationData.some(
+      (n) =>
+        n["Corporate / Organizational Awards"] &&
+        n["Corporate / Organizational Awards"].trim() !== ""
+    );
+
+    if (hasIndividualAwards) options.push("Individual");
+    if (hasCorporateAwards) options.push("Corporate");
+
+    return options;
+  };
+
+  const awardsTypeOptions = getAwardsTypeOptions();
 
   // Filtering logic
   const filteredData = nominationData.filter((nominee) => {
@@ -73,6 +171,13 @@ const Nomination = () => {
       !industryFilter || nominee["Industry Sector"] === industryFilter;
     const locationMatch =
       !locationFilter || nominee["Location"] === locationFilter;
+    const designationMatch =
+      !designationFilter ||
+      nominee["Designation (if individual) "] === designationFilter;
+    const organizationMatch =
+      !organizationFilter ||
+      nominee["Organization Name (if individual) "] === organizationFilter;
+
     let awardsMatch = true;
     if (awardsTypeFilter === "Individual") {
       awardsMatch =
@@ -83,7 +188,14 @@ const Nomination = () => {
         nominee["Corporate / Organizational Awards"] &&
         nominee["Corporate / Organizational Awards"].trim() !== "";
     }
-    return industryMatch && locationMatch && awardsMatch;
+
+    return (
+      industryMatch &&
+      locationMatch &&
+      designationMatch &&
+      organizationMatch &&
+      awardsMatch
+    );
   });
 
   // Pagination logic
@@ -92,6 +204,13 @@ const Nomination = () => {
     (currentPage - 1) * PAGE_SIZE,
     currentPage * PAGE_SIZE
   );
+
+  // Reset to page 1 if current page exceeds total pages after filtering
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(1);
+    }
+  }, [filteredData.length, totalPages, currentPage]);
 
   const openModal = (nominee) => {
     setSelectedNominee(nominee);
@@ -106,8 +225,8 @@ const Nomination = () => {
   // WhatsApp share helpers
   const getNomineeShareText = (nominee) => {
     const name = nominee["Full Name of Nominee"] || "Nominee";
-    const link =
-      nominee["Company Website / LinkedIn URL "] || window.location.href;
+    const websiteUrl = formatUrl(nominee["Company Website / LinkedIn URL "]);
+    const link = websiteUrl || window.location.href;
     return `Check out this nominee: ${name}\n${link}`;
   };
 
@@ -210,6 +329,57 @@ const Nomination = () => {
     }
   };
 
+  // Render URL as link or text
+  const renderUrl = (url, linkText = "Visit Link") => {
+    const formattedUrl = formatUrl(url);
+    if (formattedUrl) {
+      return (
+        <a
+          href={formattedUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => {
+            // Additional safety check
+            if (!formattedUrl.match(/^https?:\/\//i)) {
+              e.preventDefault();
+              alert("Invalid URL format");
+            }
+          }}
+        >
+          {linkText}
+        </a>
+      );
+    }
+    return url || "N/A";
+  };
+
+  // Render cell content with appropriate truncation
+  const renderCellContent = (
+    content,
+    header,
+    viewType = "table",
+    fullContent = null
+  ) => {
+    if (header === "Company Website / LinkedIn URL ") {
+      return renderUrl(content, "Visit Website");
+    } else if (header === "Supporting Documents (Optional but Recommended)") {
+      return renderUrl(content, "View Documents");
+    }
+
+    const truncatedContent = smartTruncate(content, header, viewType);
+    const originalContent = fullContent || content;
+
+    if (truncatedContent !== originalContent && originalContent) {
+      return (
+        <span title={originalContent} className="truncated-content">
+          {truncatedContent}
+        </span>
+      );
+    }
+
+    return truncatedContent || "N/A";
+  };
+
   // Table and grid view header with export button
   const viewToggle = (
     <div className="view-toggle-row">
@@ -260,7 +430,7 @@ const Nomination = () => {
             setCurrentPage(1);
           }}
         >
-          <option value="">All</option>
+          <option value="">All Industries</option>
           {industryOptions.map((opt, i) => (
             <option key={i} value={opt}>
               {opt}
@@ -268,6 +438,7 @@ const Nomination = () => {
           ))}
         </select>
       </div>
+
       <div className="filter-group">
         <label>Location:</label>
         <select
@@ -277,7 +448,7 @@ const Nomination = () => {
             setCurrentPage(1);
           }}
         >
-          <option value="">All</option>
+          <option value="">All Locations</option>
           {locationOptions.map((opt, i) => (
             <option key={i} value={opt}>
               {opt}
@@ -285,6 +456,43 @@ const Nomination = () => {
           ))}
         </select>
       </div>
+
+      <div className="filter-group">
+        <label>Designation:</label>
+        <select
+          value={designationFilter}
+          onChange={(e) => {
+            setDesignationFilter(e.target.value);
+            setCurrentPage(1);
+          }}
+        >
+          <option value="">All Designations</option>
+          {designationOptions.map((opt, i) => (
+            <option key={i} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="filter-group">
+        <label>Organization:</label>
+        <select
+          value={organizationFilter}
+          onChange={(e) => {
+            setOrganizationFilter(e.target.value);
+            setCurrentPage(1);
+          }}
+        >
+          <option value="">All Organizations</option>
+          {organizationOptions.map((opt, i) => (
+            <option key={i} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="filter-group">
         <label>Awards Type:</label>
         <select
@@ -294,22 +502,34 @@ const Nomination = () => {
             setCurrentPage(1);
           }}
         >
-          <option value="">All</option>
-          <option value="Individual">Individual / HR Awards</option>
-          <option value="Corporate">Corporate / Organizational Awards</option>
+          <option value="">All Awards</option>
+          {awardsTypeOptions.map((opt, i) => (
+            <option key={i} value={opt}>
+              {opt === "Individual"
+                ? "Individual / HR Awards"
+                : "Corporate / Organizational Awards"}
+            </option>
+          ))}
         </select>
       </div>
-      {(industryFilter || locationFilter || awardsTypeFilter) && (
+
+      {(industryFilter ||
+        locationFilter ||
+        designationFilter ||
+        organizationFilter ||
+        awardsTypeFilter) && (
         <button
           className="clear-filters-btn"
           onClick={() => {
             setIndustryFilter("");
             setLocationFilter("");
+            setDesignationFilter("");
+            setOrganizationFilter("");
             setAwardsTypeFilter("");
             setCurrentPage(1);
           }}
         >
-          Clear Filters
+          Clear All Filters
         </button>
       )}
     </div>
@@ -334,43 +554,52 @@ const Nomination = () => {
 
     return (
       <div className="pagination-row">
-        <button
-          className="pagination-btn"
-          onClick={() => onPageChange(1)}
-          disabled={currentPage === 1}
-        >
-          ⏮ First
-        </button>
-        <button
-          className="pagination-btn"
-          onClick={() => onPageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          ◀ Prev
-        </button>
-        {getPages().map((page) => (
+        <div className="pagination-info">
+          Showing {(currentPage - 1) * PAGE_SIZE + 1} to{" "}
+          {Math.min(currentPage * PAGE_SIZE, filteredData.length)} of{" "}
+          {filteredData.length} entries
+        </div>
+        <div className="pagination-controls">
           <button
-            key={page}
-            className={`pagination-btn${page === currentPage ? " active" : ""}`}
-            onClick={() => onPageChange(page)}
+            className="pagination-btn"
+            onClick={() => onPageChange(1)}
+            disabled={currentPage === 1}
           >
-            {page}
+            ⏮ First
           </button>
-        ))}
-        <button
-          className="pagination-btn"
-          onClick={() => onPageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Next ▶
-        </button>
-        <button
-          className="pagination-btn"
-          onClick={() => onPageChange(totalPages)}
-          disabled={currentPage === totalPages}
-        >
-          Last ⏭
-        </button>
+          <button
+            className="pagination-btn"
+            onClick={() => onPageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            ◀ Prev
+          </button>
+          {getPages().map((page) => (
+            <button
+              key={page}
+              className={`pagination-btn${
+                page === currentPage ? " active" : ""
+              }`}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            className="pagination-btn"
+            onClick={() => onPageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next ▶
+          </button>
+          <button
+            className="pagination-btn"
+            onClick={() => onPageChange(totalPages)}
+            disabled={currentPage === totalPages}
+          >
+            Last ⏭
+          </button>
+        </div>
       </div>
     );
   };
@@ -392,6 +621,7 @@ const Nomination = () => {
       <div className="nomination-container">
         <h2>Nomination Page</h2>
         <p className="error-message">{error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
       </div>
     );
   }
@@ -419,13 +649,35 @@ const Nomination = () => {
         <p>
           Total Nominations:{" "}
           <span className="stats-number">{filteredData.length}</span>
+          {filteredData.length !== nominationData.length && (
+            <span className="filter-indicator">
+              {" "}
+              (filtered from {nominationData.length})
+            </span>
+          )}
         </p>
         <p className="export-info">
           Click "Export to Excel" to download all nomination data
         </p>
       </div>
 
-      {viewMode === "table" ? (
+      {filteredData.length === 0 ? (
+        <div className="no-data-message">
+          <span className="no-data-icon">🔍</span>
+          <p>No nominations match the current filters.</p>
+          <button
+            className="clear-filters-btn"
+            onClick={() => {
+              setIndustryFilter("");
+              setLocationFilter("");
+              setAwardsTypeFilter("");
+              setCurrentPage(1);
+            }}
+          >
+            Clear All Filters
+          </button>
+        </div>
+      ) : viewMode === "table" ? (
         <>
           <div className="table-responsive">
             <table className="nomination-table horizontal-headers">
@@ -444,53 +696,11 @@ const Nomination = () => {
                     <td className="serial-number">
                       {(currentPage - 1) * PAGE_SIZE + rowIndex + 1}
                     </td>
-                    {headers.map((header, colIndex) => {
-                      let cellContent = nominee[header];
-                      // Truncate long cell content, show full on modal
-                      let isLong =
-                        header ===
-                          "Provide a 300-500 word description for each selected category" ||
-                        (typeof cellContent === "string" &&
-                          cellContent.length > 90);
-
-                      // ---- Declaration Shorten ----
-                      if (
-                        header === "Declaration" &&
-                        typeof cellContent === "string"
-                      ) {
-                        const truncated =
-                          cellContent.length > 25
-                            ? cellContent.slice(0, 25) + "..."
-                            : cellContent;
-                        cellContent = (
-                          <span title={cellContent}>{truncated}</span>
-                        );
-                      } else if (
-                        header === "Company Website / LinkedIn URL " ||
-                        header ===
-                          "Supporting Documents (Optional but Recommended)"
-                      ) {
-                        cellContent = cellContent ? (
-                          <a
-                            href={cellContent}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {header.includes("Website")
-                              ? "Visit Link"
-                              : "View Documents"}
-                          </a>
-                        ) : (
-                          "N/A"
-                        );
-                      } else if (isLong) {
-                        const truncated = truncate(cellContent, 90);
-                        cellContent = (
-                          <span title={cellContent}>{truncated}</span>
-                        );
-                      }
-                      return <td key={colIndex}>{cellContent}</td>;
-                    })}
+                    {headers.map((header, colIndex) => (
+                      <td key={colIndex}>
+                        {renderCellContent(nominee[header], header, "table")}
+                      </td>
+                    ))}
                     <td>
                       <button
                         className="view-btn"
@@ -537,29 +747,7 @@ const Nomination = () => {
                     <div className="card-row" key={i}>
                       <span className="card-label">{header}:</span>
                       <span className="card-value">
-                        {(header === "Company Website / LinkedIn URL " ||
-                          header ===
-                            "Supporting Documents (Optional but Recommended)") &&
-                        nominee[header] ? (
-                          <a
-                            href={nominee[header]}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {header.includes("Website")
-                              ? "Visit Link"
-                              : "View Documents"}
-                          </a>
-                        ) : header === "Declaration" &&
-                          typeof nominee[header] === "string" ? (
-                          <span title={nominee[header]}>
-                            {nominee[header].length > 25
-                              ? nominee[header].slice(0, 25) + "..."
-                              : nominee[header]}
-                          </span>
-                        ) : (
-                          nominee[header] || "N/A"
-                        )}
+                        {renderCellContent(nominee[header], header, "grid")}
                       </span>
                     </div>
                   ))}
@@ -609,21 +797,10 @@ const Nomination = () => {
                 <div className="modal-row" key={i}>
                   <span className="modal-label">{header}:</span>
                   <span className="modal-value">
-                    {(header === "Company Website / LinkedIn URL " ||
-                      header ===
-                        "Supporting Documents (Optional but Recommended)") &&
-                    selectedNominee[header] ? (
-                      <a
-                        href={selectedNominee[header]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {header.includes("Website")
-                          ? "Visit Link"
-                          : "View Documents"}
-                      </a>
-                    ) : (
-                      selectedNominee[header] || "N/A"
+                    {renderCellContent(
+                      selectedNominee[header],
+                      header,
+                      "modal"
                     )}
                   </span>
                 </div>
