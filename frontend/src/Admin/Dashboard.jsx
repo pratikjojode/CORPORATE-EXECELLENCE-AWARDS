@@ -45,7 +45,7 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
           <img
-            className="logo"
+            className="logo-admin"
             src={logo}
             alt="Corporate Excellence Awards Logo"
           />
@@ -62,7 +62,7 @@ const Dashboard = () => {
                     setIsSidebarOpen(false);
                   }}
                 >
-                  Nomination
+                  Nomination Data
                 </button>
               </li>
               <li>
@@ -75,7 +75,18 @@ const Dashboard = () => {
                     setIsSidebarOpen(false);
                   }}
                 >
-                  Attendance
+                  Attendance Data
+                </button>
+              </li>
+              <li>
+                <button
+                  className={isActive("/home") ? "active" : ""}
+                  onClick={() => {
+                    navigate("/");
+                    setIsSidebarOpen(false);
+                  }}
+                >
+                  Website Home Page
                 </button>
               </li>
             </ul>
