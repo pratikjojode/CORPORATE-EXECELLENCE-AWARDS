@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Components/Header";
 import HeroSection from "../Components/HeroSection";
 import Nominees from "../Components/Nominees";
@@ -8,6 +8,10 @@ import Sponsors from "../Components/Sponsors";
 import Footer from "../Components/Footer";
 
 const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <Header />
