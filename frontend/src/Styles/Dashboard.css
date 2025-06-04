@@ -455,7 +455,7 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
-.logo {
+.logo-admin {
   margin: 10px auto;
   width: 150px;
   height: auto;

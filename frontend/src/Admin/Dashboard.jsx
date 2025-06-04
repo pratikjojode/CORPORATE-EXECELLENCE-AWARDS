@@ -45,7 +45,7 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
           <img
-            className="logo"
+            className="logo-admin"
             src={logo}
             alt="Corporate Excellence Awards Logo"
           />
