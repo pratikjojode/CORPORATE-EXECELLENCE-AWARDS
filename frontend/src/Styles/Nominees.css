@@ -1,0 +1,397 @@
+/* NominationProcess.css */
+
+/* Import the Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Basic reset and font application */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* Main container for the nomination process section */
+.nomination-process-container {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #ffffff;
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background decoration */
+.nomination-process-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Section Title */
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 50%, #f59e0b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.02em;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffd700, #ffed4a);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Timeline wrapper */
+.timeline-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Vertical Timeline Line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent 0%, #ffd700 10%, #ffd700 90%, transparent 100%);
+  border-radius: 2px;
+  display: none;
+}
+
+/* Show timeline line on medium screens and up */
+@media (min-width: 768px) {
+  .timeline-line {
+    display: block;
+  }
+}
+
+/* Individual timeline item */
+.timeline-item {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.8s; }
+.timeline-item:nth-child(5) { animation-delay: 1.0s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Timeline dot */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+  border: 4px solid #0a0a0a;
+  border-radius: 50%;
+  z-index: 10;
+  display: none;
+  box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: translateX(-50%) scale(1.2);
+  box-shadow: 0 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Show timeline dot on medium screens and up */
+@media (min-width: 768px) {
+  .timeline-dot {
+    display: block;
+  }
+}
+
+/* Timeline card styling */
+.timeline-card {
+  background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd700, #ffed4a);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-card:hover::before {
+  opacity: 1;
+}
+
+.timeline-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Card header with icon and title */
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+  z-index: 10;
+  position: relative;
+}
+
+.step-icon {
+  color: #ffd700 !important;
+  background: rgba(255, 215, 0, 0.15);
+  padding: 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  z-index: 10;
+  position: relative;
+}
+
+.timeline-card:hover .step-icon {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000 !important; /* Use black text for white background box */
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+
+.card-date {
+  font-size: 1.1rem;
+  color: #ffd700 !important;
+  margin-bottom: 15px;
+  font-weight: 600;
+  display: inline-block;
+  background: rgba(255, 215, 0, 0.15);
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  z-index: 10;
+  position: relative;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #e0e0e0 !important;
+  line-height: 1.7;
+  font-weight: 400;
+  z-index: 10;
+  position: relative;
+}
+
+/* Responsive adjustments for timeline items on medium screens and up */
+@media (min-width: 768px) {
+  .timeline-item {
+    justify-content: flex-start;
+    margin-bottom: 80px;
+  }
+
+  .timeline-item.left {
+    justify-content: flex-end;
+    padding-right: calc(50% + 50px);
+  }
+
+  .timeline-item.right {
+    justify-content: flex-start;
+    padding-left: calc(50% + 50px);
+  }
+
+  .timeline-item.left .timeline-card {
+    text-align: right;
+  }
+
+  .timeline-item.right .timeline-card {
+    text-align: left;
+  }
+
+  .timeline-item.left .card-header {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+  }
+
+  .timeline-item.right .card-header {
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+}
+
+/* Nominate Now Button */
+.nominate-button-wrapper {
+  text-align: center;
+  margin-top: 80px;
+  z-index: 1;
+  position: relative;
+}
+
+.nominate-button {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 50%, #f59e0b 100%);
+  color: #000000;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nominate-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.nominate-button:hover::before {
+  left: 100%;
+}
+
+.nominate-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+}
+
+.nominate-button:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 767px) {
+  .nomination-process-container {
+    padding: 60px 15px;
+  }
+
+  .timeline-item {
+    margin-bottom: 40px;
+  }
+
+  .timeline-card {
+    max-width: 100%;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .card-header {
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .card-date {
+    font-size: 1rem;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+  }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1200px) {
+  .timeline-wrapper {
+    max-width: 1400px;
+  }
+
+  .timeline-card {
+    max-width: 500px;
+    padding: 40px;
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+  }
+
+  .card-description {
+    font-size: 1.05rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Components/Header";
 import HeroSection from "../Components/HeroSection";
+import Nominees from "../components/Nominees";
 import Vision from "../Components/Vision";
 import PreviousEvents from "../Components/PreviousEvents";
 import Sponsors from "../Components/Sponsors";
@@ -11,6 +12,7 @@ const HomePage = () => {
     <div>
       <Header />
       <HeroSection />
+      <Nominees />
       <Vision />
       <PreviousEvents />
       <Sponsors />

@@ -1,8 +1,10 @@
+/* General Section Styles */
 .sponsors-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Existing theme colors */
   min-height: 100vh;
   color: white;
+  overflow: hidden; /* Helps with animations */
 }
 
 .section-container {
@@ -13,319 +15,311 @@
 
 .sponsors-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem; /* Increased margin for better separation */
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.8rem; /* Slightly larger title */
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #FCD34D;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: #FCD34D; /* Gold color */
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* More pronounced shadow */
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 800px;
+  font-size: 1.15rem; /* Slightly larger subtitle */
+  line-height: 1.7;
+  max-width: 850px; /* Wider subtitle */
   margin: 0 auto;
-  opacity: 0.9;
+  opacity: 0.95; /* Slightly less transparent */
+  text-align: center;
 }
 
+/* Sponsorship Grid and Card Styles (based on reference) */
 .sponsorship-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min-width for larger cards */
+  gap: 2.5rem; /* Increased gap between cards */
+  margin-bottom: 4.5rem; /* Increased margin */
 }
 
-.sponsorship-summary-card {
-  background: rgba(255, 255, 255, 0.95);
+.sponsorship-card { /* New class for the main sponsorship cards */
+  background: rgba(255, 255, 255, 0.98); /* Near opaque white background */
   color: #1a1a1a;
-  border-radius: 16px;
+  border-radius: 12px; /* Slightly less rounded corners */
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-  border-top: 4px solid;
+  box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15), 0 8px 15px -8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to top */
+  align-items: stretch; /* Stretch items to fill card width */
 }
 
-.sponsorship-summary-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.sponsorship-card:hover {
+  transform: translateY(-10px); /* More pronounced lift on hover */
+  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
 
 .card-header {
-  padding: 1.5rem;
-  text-align: center;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  padding: 1.5rem 1.75rem; /* Adjusted padding */
+  background: #F8F8F8; /* Light gray background for header */
+  border-bottom: 4px solid; /* Emphasize border-bottom for color accent */
+  /* --- START OF CHANGES FOR ALIGNMENT --- */
+  display: flex; /* Make it a flex container */
+  justify-content: space-between; /* Push items to ends */
+  align-items: baseline; /* Align text baselines for better visual alignment */
+  /* text-align: center; REMOVED as flexbox controls alignment */
+  /* --- END OF CHANGES FOR ALIGNMENT --- */
 }
 
 .package-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #5B21B6;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem; /* Larger package name */
+  font-weight: 800; /* Bolder */
+  color: #5B21B6; /* Purple */
+  margin-bottom: 0; /* REMOVED bottom margin for horizontal alignment */
 }
 
 .package-price {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #7C3AED;
-  margin-bottom: 0.5rem;
+  font-size: 2.2rem; /* Larger price */
+  font-weight: 900; /* Extra bold */
+  color: #7C3AED; /* Accent purple */
+  line-height: 1; /* Tighter line height */
+  margin-bottom: 0; /* REMOVED bottom margin for horizontal alignment */
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 1.75rem; /* Increased padding */
+  flex-grow: 1;
+  text-align: left; /* Align content to left */
 }
 
 .highlight {
+  font-size: 1.15rem; /* Larger highlight text */
+  font-weight: 700;
+  color: #8B5CF6; /* Purple accent */
+  margin-bottom: 1.5rem; /* More space below highlight */
+  text-align: center; /* Keep highlight centered */
+}
+
+.package-benefits-list { /* New class for the ul */
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-item { /* New class for list items */
   font-size: 1rem;
-  font-weight: 600;
-  color: #8B5CF6;
-  margin-bottom: 1rem;
-  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 0.7rem; /* Space between benefits */
+  padding-left: 1.5rem; /* Space for custom bullet */
+  position: relative;
+  color: #333;
 }
 
-.key-benefits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+.benefit-item::before { /* Custom bullet point */
+  content: '✔'; /* Checkmark unicode character */
+  color: #7C3AED; /* Purple checkmark */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
 }
 
-.benefit-tag {
-  background: #EDE9FE;
-  color: #5B21B6;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
+/* Removed card-actions and related button styles */
 
-.card-actions {
-  padding: 0 1.5rem 1.5rem;
-  display: flex;
-  gap: 0.75rem;
-}
-
-.details-btn {
-  flex: 1;
-  background: transparent;
-  color: #7C3AED;
-  border: 2px solid #7C3AED;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.details-btn:hover {
-  background: #7C3AED;
-  color: white;
-}
-
-.sponsor-btn {
-  flex: 1;
-  background: linear-gradient(135deg, #7C3AED, #5B21B6);
-  color: white;
-  border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sponsor-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
-}
-
-.sponsor-btn.primary {
-  background: linear-gradient(135deg, #7C3AED, #5B21B6);
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  margin-right: 1rem;
-}
-
-.sponsor-btn.secondary {
-  background: transparent;
-  border: 2px solid #7C3AED;
-  color: #7C3AED;
-  padding: 1rem 2rem;
-}
-
-.sponsor-btn.secondary:hover {
-  background: #7C3AED;
-  color: white;
-}
-
+/* Collaboration Section */
 .collaboration-section {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque background */
+  padding: 2.5rem; /* Increased padding */
   border-radius: 16px;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   backdrop-filter: blur(10px);
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
 }
 
 .collaboration-section h3 {
   color: #FCD34D;
-  font-size: 1.5rem;
+  font-size: 1.7rem; /* Larger heading */
   margin-bottom: 1rem;
+}
+
+.collaboration-section p {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
 }
 
 .collaboration-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted min-width */
+  gap: 1.2rem; /* Increased gap */
   margin-top: 1.5rem;
+  justify-items: center;
 }
 
 .collaboration-card {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 1rem;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque */
+  padding: 1.2rem; /* Increased padding */
+  border-radius: 10px; /* Slightly rounded corners */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px);
-}
-
-.collab-btn {
-  background: #FCD34D;
-  color: #1a1a1a;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  backdrop-filter: blur(8px); /* More blur */
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Stronger subtle border */
+  min-height: 70px; /* Ensure consistent height */
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out; /* Smooth hover */
 }
 
-.collab-btn:hover {
-  background: #F59E0B;
-  transform: translateY(-2px);
+.collaboration-card:hover {
+  transform: scale(1.05); /* Slight scale up on hover */
+  background: rgba(255, 255, 255, 0.3); /* Darken on hover */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
 
+/* Contact Section */
 .contact-section {
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque */
+  padding: 2.5rem; /* Increased padding */
   border-radius: 16px;
   backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
 }
 
 .contact-section h3 {
   color: #FCD34D;
-  font-size: 1.8rem;
+  font-size: 2rem; /* Larger heading */
   margin-bottom: 1rem;
 }
 
-.contact-btn {
-  background: linear-gradient(135deg, #FCD34D, #F59E0B);
-  color: #1a1a1a;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.contact-section p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem; /* Increased gap */
   margin-top: 1rem;
 }
 
-.contact-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 25px rgba(252, 211, 77, 0.4);
-}
-
-/* Package Details Page */
-.back-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 2rem;
-  transition: all 0.3s ease;
-}
-
-.back-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.package-details {
-  background: rgba(255, 255, 255, 0.95);
+.contact-btn {
+  background: linear-gradient(135deg, #FCD34D, #F59E0B); /* Gold gradient */
   color: #1a1a1a;
-  padding: 3rem;
-  border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.package-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #5B21B6;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.package-details .package-price {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #7C3AED;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.benefits-list h3 {
-  color: #5B21B6;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.benefits-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.benefits-list li {
-  background: #F3F4F6;
-  margin-bottom: 0.5rem;
-  padding: 1rem;
+  border: none;
+  padding: 1.1rem 2.5rem; /* Larger padding */
   border-radius: 8px;
-  border-left: 4px solid #7C3AED;
+  font-weight: 700;
+  font-size: 1.15rem; /* Larger font */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  min-width: 250px; /* Ensure sufficient width */
+}
+
+.contact-btn:hover {
+  transform: translateY(-5px); /* More pronounced lift */
+  box-shadow: 0 20px 30px rgba(252, 211, 77, 0.5); /* Stronger shadow */
+}
+
+/* Contact Info Reveal Animation */
+.contact-info-reveal {
+  margin-top: 2rem; /* More space above */
+  padding: 1.5rem; /* Larger padding */
+  background: rgba(255, 255, 255, 0.25); /* More opaque */
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px); /* Starts lower */
+  animation: fadeInSlideUp 0.6s ease-out forwards; /* Longer, smoother animation */
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
+}
+
+.contact-info-reveal p {
+  margin: 0.7rem 0; /* More space between lines */
   font-weight: 500;
 }
 
-.cta-section {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 2px solid #E5E7EB;
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .section-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
   }
   
   .sponsorship-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 1.5rem;
   }
   
-  .card-actions {
-    flex-direction: column;
+  .sponsorship-card { /* Adjusted from sponsorship-summary-card */
+    padding-bottom: 1.5rem;
   }
-  
+
   .collaboration-grid {
     grid-template-columns: 1fr;
   }
   
-  .package-details {
-    padding: 2rem;
+  .contact-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-section {
+    padding: 3rem 0;
+  }
+  .section-container {
+    padding: 0 1rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  /* Adjusted for small screens where elements might stack */
+  .card-header {
+    flex-direction: column; /* Stack name and price on small screens */
+    align-items: center;
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+  .package-name, .package-price {
+    margin-bottom: 0.5rem; /* Add some space back when stacked */
+  }
+  .package-name {
+    font-size: 1.5rem;
+  }
+  .package-price {
+    font-size: 1.8rem;
+  }
+  .contact-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 }

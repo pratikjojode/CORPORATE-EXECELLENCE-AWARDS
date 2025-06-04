@@ -20,10 +20,10 @@ const Header = () => {
         <nav className={`nav-menu ${isMobileMenuOpen ? "active" : ""}`}>
           <ul onClick={() => setIsMobileMenuOpen(false)}>
             <li>
-              <a href="#home">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="#sponsors">Sponsors</a>
+              <a href="/Sponsors">Sponsors</a>
             </li>
             <li>
               <a href="#contact">Contact</a>
