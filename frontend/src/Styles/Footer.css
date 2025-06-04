@@ -1,0 +1,169 @@
+.footer {
+  background-color: #4b2e83;
+  color: #ffffff;
+  padding: 4rem 0 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.footer-section {
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #e6d9ff;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-section h3:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #b399d4;
+}
+
+.footer-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #d9c7ff;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.footer-section a:hover {
+  color: #e6d9ff;
+}
+
+.footer-section a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #e6d9ff;
+  transition: width 0.3s ease;
+}
+
+.footer-section a:hover:after {
+  width: 100%;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #e6d9ff;
+  transform: translateY(-3px);
+}
+
+.contact-icon {
+  margin-right: 0.5rem;
+  color: #e6d9ff;
+}
+
+.newsletter {
+  margin-top: 2rem;
+}
+
+.newsletter h4 {
+  color: #e6d9ff;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.newsletter input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter button {
+  background-color: #6d4c9e;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.newsletter button:hover {
+  background-color: #5a3d7a;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(214, 196, 255, 0.2);
+  margin-top: 2rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d9c7ff;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .footer-section h3:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,331 @@
+.sponsors-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sponsors-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #FCD34D;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.sponsorship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.sponsorship-summary-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  border-top: 4px solid;
+}
+
+.sponsorship-summary-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.card-header {
+  padding: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+}
+
+.package-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5B21B6;
+  margin-bottom: 0.5rem;
+}
+
+.package-price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #7C3AED;
+  margin-bottom: 0.5rem;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.highlight {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #8B5CF6;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.key-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-tag {
+  background: #EDE9FE;
+  color: #5B21B6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.card-actions {
+  padding: 0 1.5rem 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.details-btn {
+  flex: 1;
+  background: transparent;
+  color: #7C3AED;
+  border: 2px solid #7C3AED;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+  background: #7C3AED;
+  color: white;
+}
+
+.sponsor-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sponsor-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+}
+
+.sponsor-btn.primary {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+.sponsor-btn.secondary {
+  background: transparent;
+  border: 2px solid #7C3AED;
+  color: #7C3AED;
+  padding: 1rem 2rem;
+}
+
+.sponsor-btn.secondary:hover {
+  background: #7C3AED;
+  color: white;
+}
+
+.collaboration-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  backdrop-filter: blur(10px);
+}
+
+.collaboration-section h3 {
+  color: #FCD34D;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.collaboration-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.collaboration-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.collab-btn {
+  background: #FCD34D;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.collab-btn:hover {
+  background: #F59E0B;
+  transform: translateY(-2px);
+}
+
+.contact-section {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.contact-section h3 {
+  color: #FCD34D;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.contact-btn {
+  background: linear-gradient(135deg, #FCD34D, #F59E0B);
+  color: #1a1a1a;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(252, 211, 77, 0.4);
+}
+
+/* Package Details Page */
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.package-details {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.package-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #5B21B6;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.package-details .package-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #7C3AED;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.benefits-list h3 {
+  color: #5B21B6;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.benefits-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits-list li {
+  background: #F3F4F6;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #7C3AED;
+  font-weight: 500;
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #E5E7EB;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .sponsorship-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-actions {
+    flex-direction: column;
+  }
+  
+  .collaboration-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .package-details {
+    padding: 2rem;
+  }
+}
