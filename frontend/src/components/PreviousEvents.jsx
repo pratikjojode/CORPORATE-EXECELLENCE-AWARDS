@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Styles/PreviousEvents.css'; // Adjust the path as necessary
+import '../Styles/PreviousEvents.css'; // Ensure you have the appropriate CSS file for styling
 
 const PreviousEvents = () => {
   const [activeEvent, setActiveEvent] = useState(0);

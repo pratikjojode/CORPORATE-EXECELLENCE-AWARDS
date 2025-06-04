@@ -36,52 +36,48 @@ const HeroSection = () => {
       button.addEventListener('click', handleButtonClick);
     });
 
+    // Add ripple animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
     // Cleanup
     return () => {
       buttons.forEach(button => {
         button.removeEventListener('click', handleButtonClick);
       });
+      document.head.removeChild(style);
     };
   }, []);
 
   return (
-    <>
-      {/* Navigation Bar */}
-      <nav className="navbar">
-        <div className="logo-section">
-          <h1 className="logo-title">CORPORATE EXCELLENCE AWARDS</h1>
-          <p className="logo-subtitle">Celebrating the Achievements of Corporate Professionals</p>
+    <section id="home" className="hero-section">
+      {/* Floating decorative elements */}
+      <div className="floating-element">🏆</div>
+      <div className="floating-element">⭐</div>
+      <div className="floating-element">🎖️</div>
+      
+      <div className="hero-content">
+        <h1>THE CORPORATE EXCELLENCE AWARDS</h1>
+        <p className="ethos">OUR GLOBAL ETHOS: 'ONE EARTH, ONE FAMILY'. EMBRACE THE RESPONSIBILITY</p>
+        <h2>DISCOVERING EXCELLENCE IN SUCCESSFUL BUSINESS</h2>
+        <div className="event-details">
+          <p>7th JUNE, 2024 | Friday</p>
+          <p>6 PM Onward (9 PM Dinner)</p>
         </div>
-        <ul className="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#sponsors">Sponsors</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button className="register-btn" >Register Now</button>
-      </nav>
-
-      {/* Hero Section */}
-      <section id="home" className="hero-section">
-        {/* Floating decorative elements */}
-        <div className="floating-element">🏆</div>
-        <div className="floating-element">⭐</div>
-        <div className="floating-element">🎖️</div>
-        
-        <div className="hero-content">
-          <h1>THE CORPORATE EXCELLENCE AWARDS</h1>
-          <p className="ethos">OUR GLOBAL ETHOS: 'ONE EARTH, ONE FAMILY'. EMBRACE THE RESPONSIBILITY</p>
-          <h2>DISCOVERING EXCELLENCE IN SUCCESSFUL BUSINESS</h2>
-          <div className="event-details">
-            <p>7th JUNE, 2024 | Friday</p>
-            <p>6 PM Onward (9 PM Dinner)</p>
-          </div>
-          <div className="cta-buttons">
-            <button className="primary-btn"><a href='https://docs.google.com/forms/d/e/1FAIpQLSfGfmANTWGKhpEXYI7yNkt1jboJjGZF_NZmLhPAewJ7jXksGw/viewform'>Nominate Now</a></button>
-            <button className="secondary-btn">Learn More</button>
-          </div>
+        <div className="cta-buttons">
+          <button className="primary-btn">Nominate Now</button>
+          <button className="secondary-btn">Learn More</button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
