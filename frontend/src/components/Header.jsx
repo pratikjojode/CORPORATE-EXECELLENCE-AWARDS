@@ -1,13 +1,23 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // updated
 import "../Styles/Header.css";
 import logo from "../assets/corporate2.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path ? "active-link" : "";
   };
 
   return (
@@ -18,15 +28,24 @@ const Header = () => {
         </div>
 
         <nav className={`nav-menu ${isMobileMenuOpen ? "active" : ""}`}>
-          <ul onClick={() => setIsMobileMenuOpen(false)}>
+          <ul onClick={closeMenu}>
             <li>
-              <a href="/">Home</a>
+              <Link to="/" className={isActive("/")}>
+                Home
+              </Link>
             </li>
             <li>
-              <a href="/Sponsors">Sponsors</a>
+              <Link to="/Sponsors" className={isActive("/Sponsors")}>
+                Sponsors
+              </Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a
+                href="#contact"
+                className={location.hash === "#contact" ? "active-link" : ""}
+              >
+                Contact
+              </a>
             </li>
           </ul>
         </nav>

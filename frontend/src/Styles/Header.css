@@ -4,6 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.nav-menu ul li a.active-link {
+  color: #007bff;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
 
 .header {
   position: fixed;
