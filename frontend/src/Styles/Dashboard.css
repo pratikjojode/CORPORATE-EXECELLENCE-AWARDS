@@ -39,7 +39,7 @@ body {
 .sidebar {
   width: 270px;
   /* Deeper, more refined blue for sidebar */
-  background: rgba(44, 62, 80, 0.85); /* Slightly less transparent */
+  background: black; /* Slightly less transparent */
   backdrop-filter: blur(15px); /* Increased blur for more glass effect */
   border-right: 1.5px solid rgba(255, 255, 255, 0.15); /* Lighter border */
   padding: 2.2rem 0 1.5rem;
@@ -66,7 +66,7 @@ body {
 .sidebar h2 {
   font-size: 1.45rem;
   font-weight: 700;
-  color: #ecf0f1; /* Lighter color for sidebar title */
+  color: gold; /* Lighter color for sidebar title */
   text-align: center;
   margin-bottom: 2.7rem;
   padding: 0 1.5rem;
