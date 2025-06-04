@@ -1,4 +1,4 @@
-/* Container */
+/* Container & Base */
 .nomination-container {
   max-width: 1500px;
   margin: 32px auto;
@@ -6,44 +6,72 @@
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   padding: 32px 24px 40px 24px;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif; /* Added Inter for consistency if linked */
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack content vertically */
+  gap: 20px; /* Consistent spacing between major sections */
 }
 
-/* Header */
-.header-row {
+/* Header & Layout */
+.header-row,
+.view-toggle-row,
+.filter-row,
+.stats-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 18px;
+  gap: 18px;
+  margin-bottom: 0; /* Remove fixed margin-bottom here, use gap in parent */
+}
+
+.header-row {
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Adjust gap for wrapping */
+}
+
+.filter-row {
+  flex-wrap: wrap;
+  align-items: flex-end; /* Keeps labels above inputs */
+  gap: 15px 18px; /* Vertical and horizontal gap for wrapped items */
+}
+
+.stats-row {
+  flex-wrap: wrap;
+  gap: 15px 32px; /* Vertical and horizontal gap */
 }
 
 .header-row h2 {
   font-size: 2rem;
   color: #1e293b;
   margin: 0;
+  line-height: 1.2; /* Better line height for responsiveness */
 }
 
-/* View Toggle */
-.view-toggle-row {
-  display: flex;
+/* Buttons - General Styles */
+.view-toggle-btn,
+.excel-export-btn,
+.clear-filters-btn,
+.view-btn,
+.pagination-btn,
+.whatsapp-btn {
+  border: none;
+  border-radius: 6px; /* Slightly more rounded */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease; /* Added transform for active state */
+  padding: 8px 20px; /* Slightly more padding */
+  font-size: 0.95rem; /* Consistent font size */
+  display: inline-flex; /* For consistent alignment with icons */
   align-items: center;
-  gap: 18px;
-}
-
-.view-buttons {
-  display: flex;
+  justify-content: center;
   gap: 8px;
+  min-height: 38px; /* Ensure good touch target */
+  white-space: nowrap; /* Prevent text wrapping inside buttons */
 }
 
 .view-toggle-btn {
   background: #e0e7ef;
   color: #1e293b;
-  border: none;
-  padding: 7px 18px;
-  border-radius: 5px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
 }
 
 .view-toggle-btn.active,
@@ -55,384 +83,46 @@
 .excel-export-btn {
   background: #22c55e;
   color: #fff;
-  border: none;
-  padding: 7px 18px;
-  border-radius: 5px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: background 0.2s;
 }
 
 .excel-export-btn:disabled {
   background: #a7f3d0;
-  color: #fff;
   cursor: not-allowed;
-}
-
-.excel-icon {
-  font-size: 1.2em;
-}
-
-.export-spinner {
-  border: 2px solid #fff;
-  border-top: 2px solid #22c55e;
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  animation: spin 0.8s linear infinite;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Filters */
-.filter-row {
-  display: flex;
-  gap: 18px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-  align-items: flex-end;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.filter-group label {
-  font-size: 0.95em;
-  color: #334155;
-  font-weight: 500;
-}
-
-.filter-group select {
-  padding: 5px 10px;
-  border-radius: 4px;
-  border: 1px solid #cbd5e1;
-  background: #f1f5f9;
-  font-size: 1em;
+  opacity: 0.7; /* Indicate disabled state more clearly */
 }
 
 .clear-filters-btn {
   background: #f87171;
   color: #fff;
-  border: none;
-  padding: 7px 16px;
-  border-radius: 5px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-left: 8px;
-  transition: background 0.2s;
+  padding: 8px 18px; /* Adjusted padding */
+  margin-left: 0; /* Remove fixed margin-left */
 }
+
 .clear-filters-btn:hover {
   background: #dc2626;
-}
-
-/* Stats */
-.stats-row {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.stats-number {
-  font-weight: bold;
-  color: #2563eb;
-}
-
-.export-info {
-  font-size: 0.95em;
-  color: #64748b;
-}
-
-/* Table */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.nomination-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 18px;
-  background: #f8fafc;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.nomination-table th,
-.nomination-table td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #e2e8f0;
-  text-align: left;
-  font-size: 0.98em;
-}
-
-.nomination-table th {
-  background: #2563eb;
-  color: #fff;
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.nomination-table tr:last-child td {
-  border-bottom: none;
-}
-
-.serial-number {
-  font-weight: bold;
-  color: #2563eb;
 }
 
 .view-btn {
   background: #2563eb;
   color: #fff;
-  border: none;
-  padding: 6px 14px;
+  padding: 7px 15px; /* Adjusted padding */
   border-radius: 4px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
 }
+
 .view-btn:hover {
   background: #1d4ed8;
+  transform: translateY(-1px); /* Subtle lift on hover */
 }
 
-/* Grid View */
-.grid-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-.nominee-card {
-  background: #f1f5f9;
-  border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
-  padding: 18px 16px 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.card-number {
-  font-weight: bold;
-  color: #2563eb;
-  font-size: 1.1em;
-}
-
-.card-title {
-  font-weight: 600;
-  color: #1e293b;
-  font-size: 1.1em;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.card-row {
-  display: flex;
-  gap: 8px;
-  font-size: 0.98em;
-}
-
-.card-label {
-  color: #64748b;
-  min-width: 120px;
-  font-weight: 500;
-}
-
-.card-value a {
-  color: #2563eb;
-  text-decoration: underline;
-  word-break: break-all;
-}
-
-.card-actions {
-  margin-top: 8px;
-}
-
-/* Modal */
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(30, 41, 59, 0.25);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nominee-modal {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
-  padding: 32px 28px 24px 28px;
-  max-width: 540px;
-  width: 100%;
-  position: relative;
-  animation: modalIn 0.18s;
-}
-
-@keyframes modalIn {
-  from {
-    transform: translateY(40px) scale(0.98);
-    opacity: 0;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-
-.close-modal {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  background: #f87171;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 1.5em;
-  cursor: pointer;
-  transition: background 0.2s;
-  z-index: 2;
-}
-.close-modal:hover {
-  background: #dc2626;
-}
-
-.nominee-modal h3 {
-  margin: 0 0 12px 0;
-  font-size: 1.3em;
-  color: #1e293b;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.modal-subtitle {
-  font-size: 1em;
-  color: #2563eb;
-  font-weight: 500;
-  margin-left: 0;
-}
-
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 400px;
-  overflow-y: auto;
-  margin-top: 8px;
-}
-
-.modal-row {
-  display: flex;
-  gap: 10px;
-  font-size: 1em;
-}
-
-.modal-label {
-  color: #64748b;
-  min-width: 150px;
-  font-weight: 500;
-}
-
-.modal-value a {
-  color: #2563eb;
-  text-decoration: underline;
-  word-break: break-all;
-}
-
-/* Loading, Error, No Data */
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin: 40px 0;
-}
-
-.spinner {
-  border: 4px solid #e0e7ef;
-  border-top: 4px solid #2563eb;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  animation: spin 1s linear infinite;
-}
-
-.error-message {
-  color: #dc2626;
-  background: #fee2e2;
-  padding: 12px 18px;
-  border-radius: 6px;
-  margin: 24px 0;
-  font-weight: 500;
-}
-
-.no-data-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: #64748b;
-  margin: 40px 0;
-}
-
-.no-data-icon {
-  font-size: 2.5em;
-}
-
-/* Pagination */
-.pagination-row {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 10px;
-  flex-wrap: wrap;
+.view-btn:active {
+  transform: translateY(0); /* Reset on click */
 }
 
 .pagination-btn {
   background: #e0e7ef;
   color: #1e293b;
-  border: none;
-  padding: 6px 13px;
+  padding: 7px 14px; /* Adjusted padding */
   border-radius: 4px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
 }
 
 .pagination-btn.active,
@@ -443,63 +133,25 @@
 
 .pagination-btn:disabled {
   background: #cbd5e1;
-  color: #fff;
+  color: #94a3b8; /* Darker disabled text for better contrast */
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .nomination-container {
-    padding: 18px 6px 28px 6px;
-  }
-  .header-row {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .filter-row {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .stats-row {
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 600px) {
-  .nominee-modal {
-    padding: 18px 6px 18px 6px;
-    max-width: 98vw;
-  }
-  .modal-label,
-  .card-label {
-    min-width: 90px;
-    font-size: 0.97em;
-  }
-  .modal-content {
-    max-height: 250px;
-  }
-  .grid-list {
-    grid-template-columns: 1fr;
-  }
-}
+/* WhatsApp Button */
 .whatsapp-btn {
   background-color: #25d366;
   color: white;
-  border: none;
   border-radius: 8px;
-  padding: 5px;
+  padding: 6px 12px; /* Adjusted padding for smaller screens */
   margin: 10px auto;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
+  font-size: 13px; /* Slightly larger font */
   display: inline-flex;
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: background-color 0.3s ease, transform 0.2s ease;
+  min-height: 40px; /* Ensure good touch target */
 }
 
 .whatsapp-btn:hover {
@@ -510,4 +162,515 @@
 .whatsapp-btn:active {
   transform: translateY(0);
   background-color: #1aaa4d;
+}
+
+/* Filters */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Increased gap for better spacing */
+  flex-grow: 1; /* Allow filter groups to grow and take space */
+  min-width: 150px; /* Ensure a minimum width for filter groups */
+}
+
+.filter-group label {
+  font-size: 0.9em; /* Slightly smaller label for density */
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 2px; /* Small margin below label */
+}
+
+.filter-group select,
+.filter-group input[type="text"], /* Added input type text for consistency */
+.filter-group input[type="date"] {
+  /* Added input type date for consistency */
+  padding: 8px 12px; /* More padding for easier interaction */
+  border-radius: 6px; /* Slightly more rounded */
+  border: 1px solid #cbd5e1;
+  background: #f8fafc; /* Lighter background for inputs */
+  font-size: 0.95em; /* Consistent font size */
+  color: #334155;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  border-color: #2563eb; /* Highlight on focus */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); /* Subtle focus ring */
+}
+
+/* Stats & Text */
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px; /* Space between label and number */
+}
+
+.stats-label {
+  font-size: 0.9em;
+  color: #64748b;
+}
+
+.stats-number {
+  font-weight: bold;
+  color: #2563eb;
+  font-size: 1.2em; /* Slightly larger for prominence */
+}
+
+.export-info {
+  font-size: 0.9em;
+  color: #64748b;
+  margin-top: 10px; /* Space after export button */
+}
+
+.serial-number,
+.card-number {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.card-number {
+  font-size: 1.1em;
+}
+
+/* Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto; /* Ensures horizontal scroll for narrow tables */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin-bottom: 20px; /* Space below table */
+}
+
+.nomination-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff; /* White background for table body */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures border-radius is applied */
+  min-width: 600px; /* Ensure table is readable on smaller screens by preventing excessive shrinking */
+}
+
+.nomination-table th,
+.nomination-table td {
+  padding: 12px 15px; /* More padding for better readability */
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  font-size: 0.92em; /* Slightly smaller text for table density */
+  vertical-align: middle; /* Align content vertically */
+}
+
+.nomination-table th {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-transform: uppercase; /* Make headers uppercase */
+  letter-spacing: 0.05em; /* Subtle letter spacing */
+}
+
+.nomination-table tbody tr:nth-child(even) {
+  background: #f8fafc; /* Zebra striping for readability */
+}
+
+.nomination-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Grid & Cards */
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Adjusted minmax for better mobile grid */
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.nominee-card {
+  background: #fdfefe; /* Lighter background for cards */
+  border: 1px solid #e2e8f0; /* Subtle border */
+  border-radius: 10px; /* Slightly more rounded */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  padding: 20px 18px 15px 18px; /* Increased padding */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Increased gap */
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px; /* Increased margin */
+}
+
+.card-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1.15em; /* Slightly larger title */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Increased gap */
+}
+
+.card-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of label/value on small cards */
+  gap: 4px 8px; /* Adjusted gap for wrapping */
+  font-size: 0.95em;
+}
+
+.card-label {
+  color: #64748b;
+  min-width: 100px; /* Adjusted min-width for mobile cards */
+  font-weight: 500;
+}
+
+.card-actions {
+  margin-top: 10px; /* Increased margin */
+  display: flex;
+  justify-content: flex-end; /* Align actions to the right */
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 41, 59, 0.4); /* Darker backdrop */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px; /* Add padding to prevent modal from touching edges on small screens */
+}
+
+.nominee-modal {
+  background: #fff;
+  border-radius: 12px; /* Slightly more rounded */
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  padding: 30px 25px 25px 25px; /* Adjusted padding */
+  max-width: 580px; /* Increased max-width */
+  width: 100%;
+  position: relative;
+  animation: modalIn 0.25s ease-out forwards; /* Smoother animation */
+  max-height: 90vh; /* Prevent modal from exceeding viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px; /* Adjusted position */
+  right: 15px; /* Adjusted position */
+  background: #f87171;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px; /* Larger close button */
+  height: 36px;
+  font-size: 1.4em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  z-index: 2;
+  display: flex; /* Centered icon */
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+.close-modal:active {
+  transform: scale(1);
+}
+
+.nominee-modal h3 {
+  margin: 0 0 15px 0; /* Increased margin */
+  font-size: 1.4em; /* Slightly larger title */
+  color: #1e293b;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Space between title and subtitle */
+}
+
+.modal-subtitle {
+  font-size: 0.95em; /* Slightly smaller subtitle */
+  color: #2563eb;
+  font-weight: 500;
+  margin-left: 0;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Increased gap */
+  flex-grow: 1; /* Allow content to fill space */
+  overflow-y: auto; /* Ensures scrollbar if content overflows */
+  padding-right: 5px; /* Padding for scrollbar */
+}
+
+.modal-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of label/value in modal */
+  gap: 4px 10px; /* Adjusted gap for wrapping */
+  font-size: 0.98em;
+}
+
+.modal-label {
+  color: #64748b;
+  min-width: 120px; /* Adjusted min-width for better mobile display */
+  font-weight: 500;
+}
+
+/* Links */
+.card-value a,
+.modal-value a {
+  color: #2563eb;
+  text-decoration: underline;
+  word-break: break-all; /* Ensures long links don't break layout */
+}
+
+/* States */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* Increased gap */
+  margin: 50px 0; /* More vertical space */
+  color: #64748b; /* Text color for loading message */
+}
+
+.error-message {
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 12px 18px;
+  border-radius: 6px;
+  margin: 24px 0;
+  font-weight: 500;
+  text-align: center; /* Center error message */
+}
+
+.no-data-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Increased gap */
+  color: #64748b;
+  margin: 50px 0; /* More vertical space */
+  text-align: center;
+}
+
+.no-data-icon {
+  font-size: 2.8em; /* Slightly larger icon */
+  color: #a0aec0; /* Muted icon color */
+}
+
+/* Pagination */
+.pagination-row {
+  display: flex;
+  gap: 8px; /* Increased gap between buttons */
+  justify-content: center;
+  margin-top: 25px; /* More margin from content */
+  flex-wrap: wrap; /* Allow wrapping of pagination buttons */
+}
+
+/* Animations */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes modalIn {
+  from {
+    transform: translateY(40px) scale(0.95); /* Slightly larger scale difference */
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.spinner,
+.export-spinner {
+  border: 4px solid #e0e7ef;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.spinner {
+  width: 40px; /* Slightly larger spinner */
+  height: 40px;
+}
+.export-spinner {
+  width: 18px; /* Slightly larger export spinner */
+  height: 18px;
+  border-width: 2px;
+  border-top-color: #22c55e;
+  display: inline-block;
+  margin-right: 8px; /* More margin */
+  vertical-align: middle;
+  animation-duration: 0.8s;
+}
+.excel-icon {
+  font-size: 1.3em; /* Slightly larger icon */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nomination-container {
+    padding: 20px 10px 30px 10px; /* Adjusted padding for better fit */
+    margin: 20px auto; /* Reduce top/bottom margin */
+    gap: 15px; /* Reduce main container gap */
+  }
+
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start; /* Align header items to start */
+    gap: 10px;
+  }
+
+  .header-row h2 {
+    font-size: 1.8rem; /* Slightly smaller header on tablets */
+  }
+
+  .view-toggle-row {
+    flex-wrap: wrap; /* Allow view toggle buttons to wrap */
+    justify-content: center; /* Center view toggle buttons */
+    gap: 10px;
+  }
+
+  .filter-row {
+    flex-direction: column; /* Stack filters vertically */
+    align-items: stretch; /* Stretch filters to fill width */
+    gap: 15px;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    align-items: flex-start; /* Align stats to start */
+    gap: 10px; /* Reduced gap */
+  }
+
+  .excel-export-btn,
+  .clear-filters-btn {
+    width: 100%; /* Make buttons full width in smaller views */
+    justify-content: center; /* Center text in full-width buttons */
+  }
+
+  .table-responsive {
+    overflow-x: auto; /* Ensure horizontal scroll */
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nomination-container {
+    padding: 15px 5px 20px 5px; /* Even tighter padding for smallest screens */
+    margin: 10px auto; /* Smaller margin */
+    gap: 10px;
+  }
+
+  .header-row h2 {
+    font-size: 1.5rem; /* Further reduce header size */
+    text-align: center; /* Center header title */
+    width: 100%;
+  }
+
+  .view-toggle-btn,
+  .excel-export-btn,
+  .clear-filters-btn,
+  .whatsapp-btn,
+  .pagination-btn {
+    padding: 6px 15px; /* Smaller padding for buttons */
+    font-size: 0.88rem; /* Smaller font size for buttons */
+    min-height: 36px; /* Smaller min-height */
+  }
+
+  .filter-group {
+    min-width: unset; /* Allow filter groups to shrink more */
+    width: 100%; /* Make filters take full width */
+  }
+
+  .filter-group select,
+  .filter-group input {
+    padding: 7px 10px; /* Smaller padding for inputs */
+    font-size: 0.9em;
+  }
+
+  .nominee-modal {
+    padding: 20px 15px 20px 15px; /* Tighter padding for modal */
+    max-width: 95vw; /* Max width relative to viewport */
+    border-radius: 8px; /* Slightly less rounded */
+  }
+
+  .close-modal {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2em;
+    top: 10px;
+    right: 10px;
+  }
+
+  .nominee-modal h3 {
+    font-size: 1.2em; /* Smaller modal title */
+    margin-bottom: 10px;
+  }
+
+  .modal-subtitle {
+    font-size: 0.85em; /* Smaller modal subtitle */
+  }
+
+  .modal-content {
+    gap: 8px;
+    max-height: 300px; /* Adjusted max height for modal content */
+  }
+
+  .modal-row {
+    flex-direction: column; /* Stack label and value vertically in modal */
+    gap: 2px;
+  }
+
+  .modal-label {
+    min-width: unset; /* Allow label to shrink */
+    font-size: 0.9em;
+  }
+
+  .card-header {
+    flex-direction: column; /* Stack card header elements */
+    align-items: flex-start;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .card-title {
+    font-size: 1.05em; /* Smaller card title */
+  }
+
+  .card-row {
+    flex-direction: column; /* Stack card row elements */
+    gap: 2px;
+  }
+
+  .card-label {
+    min-width: unset; /* Allow label to shrink */
+    font-size: 0.9em;
+  }
+
+  .pagination-row {
+    gap: 5px; /* Tighter gap for pagination buttons */
+  }
 }
