@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
-import Vision from "../components/Vision";
-import PreviousEvents from "../components/PreviousEvents";
-import Sponsors from "../components/Sponsors"; // Assuming you have a Sponsors component
-import Footer from "../components/Footer"; // Assuming you have a Footer component
+import Header from "../Components/Header";
+import HeroSection from "../Components/HeroSection";
+import Vision from "../Components/Vision";
+import PreviousEvents from "../Components/PreviousEvents";
+import Sponsors from "../Components/Sponsors";
+import Footer from "../Components/Footer";
 
 const HomePage = () => {
   return (
