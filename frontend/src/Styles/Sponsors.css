@@ -1,7 +1,12 @@
 /* General Section Styles */
 .sponsors-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Existing theme colors */
+  margin-top: 20px;
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  ); /* Existing theme colors */
   min-height: 100vh;
   color: white;
   overflow: hidden; /* Helps with animations */
@@ -22,8 +27,8 @@
   font-size: 2.8rem; /* Slightly larger title */
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #FCD34D; /* Gold color */
-  text-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* More pronounced shadow */
+  color: #fcd34d; /* Gold color */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
 }
 
 .section-subtitle {
@@ -38,17 +43,22 @@
 /* Sponsorship Grid and Card Styles (based on reference) */
 .sponsorship-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min-width for larger cards */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Adjusted min-width for larger cards */
   gap: 2.5rem; /* Increased gap between cards */
   margin-bottom: 4.5rem; /* Increased margin */
 }
 
-.sponsorship-card { /* New class for the main sponsorship cards */
+.sponsorship-card {
+  /* New class for the main sponsorship cards */
   background: rgba(255, 255, 255, 0.98); /* Near opaque white background */
   color: #1a1a1a;
   border-radius: 12px; /* Slightly less rounded corners */
   overflow: hidden;
-  box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15), 0 8px 15px -8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15),
+    0 8px 15px -8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   transition: all 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -63,7 +73,7 @@
 
 .card-header {
   padding: 1.5rem 1.75rem; /* Adjusted padding */
-  background: #F8F8F8; /* Light gray background for header */
+  background: #f8f8f8; /* Light gray background for header */
   border-bottom: 4px solid; /* Emphasize border-bottom for color accent */
   /* --- START OF CHANGES FOR ALIGNMENT --- */
   display: flex; /* Make it a flex container */
@@ -76,14 +86,14 @@
 .package-name {
   font-size: 1.75rem; /* Larger package name */
   font-weight: 800; /* Bolder */
-  color: #5B21B6; /* Purple */
+  color: #5b21b6; /* Purple */
   margin-bottom: 0; /* REMOVED bottom margin for horizontal alignment */
 }
 
 .package-price {
   font-size: 2.2rem; /* Larger price */
   font-weight: 900; /* Extra bold */
-  color: #7C3AED; /* Accent purple */
+  color: #7c3aed; /* Accent purple */
   line-height: 1; /* Tighter line height */
   margin-bottom: 0; /* REMOVED bottom margin for horizontal alignment */
 }
@@ -97,18 +107,20 @@
 .highlight {
   font-size: 1.15rem; /* Larger highlight text */
   font-weight: 700;
-  color: #8B5CF6; /* Purple accent */
+  color: #8b5cf6; /* Purple accent */
   margin-bottom: 1.5rem; /* More space below highlight */
   text-align: center; /* Keep highlight centered */
 }
 
-.package-benefits-list { /* New class for the ul */
+.package-benefits-list {
+  /* New class for the ul */
   list-style: none; /* Remove default bullet points */
   padding: 0;
   margin: 0;
 }
 
-.benefit-item { /* New class for list items */
+.benefit-item {
+  /* New class for list items */
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 0.7rem; /* Space between benefits */
@@ -117,9 +129,10 @@
   color: #333;
 }
 
-.benefit-item::before { /* Custom bullet point */
-  content: '✔'; /* Checkmark unicode character */
-  color: #7C3AED; /* Purple checkmark */
+.benefit-item::before {
+  /* Custom bullet point */
+  content: "✔"; /* Checkmark unicode character */
+  color: #7c3aed; /* Purple checkmark */
   position: absolute;
   left: 0;
   top: 0;
@@ -136,11 +149,11 @@
   margin-bottom: 3.5rem;
   backdrop-filter: blur(10px);
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .collaboration-section h3 {
-  color: #FCD34D;
+  color: #fcd34d;
   font-size: 1.7rem; /* Larger heading */
   margin-bottom: 1rem;
 }
@@ -153,7 +166,10 @@
 
 .collaboration-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted min-width */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  ); /* Adjusted min-width */
   gap: 1.2rem; /* Increased gap */
   margin-top: 1.5rem;
   justify-items: center;
@@ -179,7 +195,7 @@
 .collaboration-card:hover {
   transform: scale(1.05); /* Slight scale up on hover */
   background: rgba(255, 255, 255, 0.3); /* Darken on hover */
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Contact Section */
@@ -189,11 +205,11 @@
   padding: 2.5rem; /* Increased padding */
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .contact-section h3 {
-  color: #FCD34D;
+  color: #fcd34d;
   font-size: 2rem; /* Larger heading */
   margin-bottom: 1rem;
 }
@@ -213,7 +229,7 @@
 }
 
 .contact-btn {
-  background: linear-gradient(135deg, #FCD34D, #F59E0B); /* Gold gradient */
+  background: linear-gradient(135deg, #fcd34d, #f59e0b); /* Gold gradient */
   color: #1a1a1a;
   border: none;
   padding: 1.1rem 2.5rem; /* Larger padding */
@@ -242,7 +258,7 @@
   color: white;
   font-size: 1.1rem;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .contact-info-reveal p {
@@ -269,20 +285,21 @@
   .section-subtitle {
     font-size: 1rem;
   }
-  
+
   .sponsorship-grid {
     grid-template-columns: 1fr; /* Single column on small screens */
     gap: 1.5rem;
   }
-  
-  .sponsorship-card { /* Adjusted from sponsorship-summary-card */
+
+  .sponsorship-card {
+    /* Adjusted from sponsorship-summary-card */
     padding-bottom: 1.5rem;
   }
 
   .collaboration-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-actions {
     flex-direction: column;
     align-items: center;
@@ -309,7 +326,8 @@
     align-items: center;
     padding: 1rem; /* Adjust padding for smaller screens */
   }
-  .package-name, .package-price {
+  .package-name,
+  .package-price {
     margin-bottom: 0.5rem; /* Add some space back when stacked */
   }
   .package-name {

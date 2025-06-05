@@ -6,6 +6,7 @@ import Vision from "../Components/Vision";
 import PreviousEvents from "../Components/PreviousEvents";
 import Sponsors from "../Components/Sponsors";
 import Footer from "../Components/Footer";
+import Location from "../Components/Location";
 
 const HomePage = () => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const HomePage = () => {
     <div>
       <Header />
       <HeroSection />
+      <Location />
       <Nominees />
       <Vision />
       <PreviousEvents />

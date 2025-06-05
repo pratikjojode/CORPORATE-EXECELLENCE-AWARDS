@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/Footer.css"; // Adjust the path as necessary
+import "../Styles/Footer.css";
 import {
   FaFacebook,
   FaInstagram,
@@ -13,6 +13,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
+        {/* About Section */}
         <div className="footer-section">
           <h3>About Corporate Excellence Awards</h3>
           <p>
@@ -22,19 +23,44 @@ const Footer = () => {
             domains.
           </p>
           <div className="social-icons">
-            <a href="https://facebook.com" aria-label="Facebook">
+            <a
+              href="https://facebook.com"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebook className="icon" />
             </a>
-            <a href="https://instagram.com" aria-label="Instagram">
+            <a
+              href="https://instagram.com"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram className="icon" />
             </a>
-            <a href="https://youtube.com" aria-label="YouTube">
+            <a
+              href="https://youtube.com"
+              aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaYoutube className="icon" />
             </a>
-            <a href="https://twitter.com" aria-label="Twitter">
+            <a
+              href="https://twitter.com"
+              aria-label="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaTwitter className="icon" />
             </a>
-            <a href="https://linkedin.com" aria-label="LinkedIn">
+            <a
+              href="https://linkedin.com"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaLinkedin className="icon" />
             </a>
             <a href="/admin-dashboard/nominations" aria-label="Admin Dashboard">
@@ -42,6 +68,8 @@ const Footer = () => {
             </a>
           </div>
         </div>
+
+        {/* Quick Links */}
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul>
@@ -65,14 +93,21 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+
+        {/* Contact Us */}
         <div className="footer-section">
           <h3>Contact Us</h3>
           <p>For more information, Contact us:</p>
           <p>
-            <i className="contact-icon">📞</i> 88881 81889, 89083 33901
+            <i className="contact-icon">📞</i>{" "}
+            <a href="tel:+918888181889">88881 81889</a>,{" "}
+            <a href="tel:+918908333901">89083 33901</a>
           </p>
           <p>
-            <i className="contact-icon">✉️</i> info@corporateawards.com
+            <i className="contact-icon">✉️</i>{" "}
+            <a href="mailto:info@maharashtraeducationawards.com">
+              info@maharashtraeducationawards.com
+            </a>
           </p>
           <div className="newsletter">
             <h4>Subscribe to our newsletter</h4>
@@ -83,6 +118,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer Bottom */}
       <div className="footer-bottom">
         <p>
           &copy; {new Date().getFullYear()} Corporate Excellence Awards. All

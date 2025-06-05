@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/HeroSection.css";
 
-// ✅ Import your logos
 import jobizaaLogo from "../assets/jobizza.jpg";
 import atbLogo from "../assets/anytime.jpg";
 
+import bg1 from "../assets/hero-bg2.jpg";
+import bg2 from "../assets/hero-bgg3.jpg";
+import bg3 from "../assets/IMG-20250412-WA0003.jpg";
+import bg4 from "../assets/hero-bg3.jpg";
+
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const backgroundImages = [bg1, bg2, bg3, bg4];
+
   useEffect(() => {
     const buttons = document.querySelectorAll(".primary-btn, .secondary-btn");
 
@@ -42,8 +50,84 @@ const HeroSection = () => {
     };
   }, []);
 
+  // Auto-slide effect
+  useEffect(() => {
+    const autoSlide = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(autoSlide);
+  }, [backgroundImages.length]);
+
+  // Navigation functions
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length
+    );
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <section id="home" className="hero-section">
+      {/* Background Carousel */}
+      <div className="carousel-container">
+        {backgroundImages.map((image, index) => (
+          <div
+            key={index}
+            className={`carousel-slide ${
+              index === currentSlide ? "active" : ""
+            }`}
+            style={{ backgroundImage: `url(${image})` }}
+          />
+        ))}
+
+        {/* Carousel Overlay for better text readability */}
+        <div className="carousel-overlay" />
+
+        {/* Navigation Arrows */}
+        <button className="carousel-nav prev" onClick={prevSlide}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M15 18L9 12L15 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button className="carousel-nav next" onClick={nextSlide}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M9 18L15 12L9 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* Carousel Indicators */}
+        <div className="carousel-indicators">
+          {backgroundImages.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === currentSlide ? "active" : ""}`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Floating decorative emojis */}
       <div className="floating-element">🏆</div>
       <div className="floating-element">⭐</div>
