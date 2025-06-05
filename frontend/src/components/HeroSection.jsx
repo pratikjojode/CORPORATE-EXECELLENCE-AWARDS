@@ -4,10 +4,10 @@ import "../Styles/HeroSection.css";
 import jobizaaLogo from "../assets/jobizza.jpg";
 import atbLogo from "../assets/anytime.jpg";
 
-import bg1 from "../assets/hero-bg2.jpg";
-import bg2 from "../assets/hero-bgg3.jpg";
-import bg3 from "../assets/IMG-20250412-WA0003.jpg";
-import bg4 from "../assets/hero-bg3.jpg";
+import bg1 from "../assets/job4.jpg";
+import bg2 from "../assets/job3.jpg";
+import bg3 from "../assets/job2.jpg";
+import bg4 from "../assets/job1.jpg";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
