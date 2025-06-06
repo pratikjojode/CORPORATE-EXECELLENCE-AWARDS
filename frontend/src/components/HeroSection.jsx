@@ -136,8 +136,6 @@ const HeroSection = () => {
       <div className="floating-element">🎖</div>
 
       <div className="hero-content">
-        <p>Presented By</p>
-
         {/* ✅ Sponsor Logos */}
         <div className="sponsor-logos">
           <img src={jobizaaLogo} alt="Jobizaa Logo" className="sponsor-logo" />
