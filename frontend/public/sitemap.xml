@@ -6,6 +6,11 @@
     <priority>1.00</priority>
     <changefreq>daily</changefreq>
   </url>
+  <url>
+    <loc>https://corporateexcellenceawards.com/Sponsors</loc>
+    <priority>1.00</priority>
+    <changefreq>daily</changefreq>
+  </url>
 
   <url>
     <loc>https://corporateexcellenceawards.com/adminLogin</loc>
