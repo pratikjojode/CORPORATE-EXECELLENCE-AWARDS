@@ -4,26 +4,6 @@ import "../Styles/PreviousEvents.css";
 
 const PreviousEvents = () => {
   const [activeEvent, setActiveEvent] = useState(0);
-  const [legacyVisible, setLegacyVisible] = useState(false);
-  const legacyRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setLegacyVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (legacyRef.current) {
-      observer.observe(legacyRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const events = [
     {
@@ -34,264 +14,248 @@ const PreviousEvents = () => {
         "Chief Guest: Shri Harshvardhan Patil - Former Minister of Parliamentary Affairs, Maharashtra",
         "Distinguished Juries from Tech Mahindra, Jade Global, Eclerx Services, Force Motors",
         "50+ Corporate Excellence Award Recipients",
-        "Academia Recognition with East Oxford Awards",
+        "Academia Recognition with East Oxford Awards"
+      ],
+      chiefGuests: [
+        { name: "Shri Harshvardhan Patil", designation: "Former Minister of Parliamentary Affairs, Maharashtra", profileImage: "/images/HP.png"
+ }
       ],
       notableAwardees: [
-        {
-          name: "Jignesh Patel",
-          company: "Jivika Healthcare Pvt. Ltd",
-          position: "CEO",
-        },
-        {
-          name: "Akashanand Karnik",
-          company: "1point 1solutions",
-          position: "CEO",
-        },
-        { name: "Prashant Kesari", company: "Emotorad", position: "CFO" },
-        { name: "Rohit Gupta", company: "Thyssenkrupp", position: "MD" },
+        { name: "Prashant Kesari", company: "Emotorad", position: "CFO", profileImage: "/images/Pk.png" },
+        { name: "Rohit Gupta", company: "Thyssenkrupp", position: "MD", profileImage: "/images/RG.png" },
+         { name: "Jignesh Patel", company: "Jivika Healthcare Pvt Ltd", position: "CEo", profileImage: "images/JP.png" },
+          { name: "Sanju Kela", company: "Net Protector", position: "MD", profileImage: "/images/SK.png" },
+           { name: "Ravindra Bharti", company: "Bharti Share Market", position: "MD", profileImage: "/images/RB.png" },
+            { name: "Pallavi Shah", company: "Softdel Director", position: "HR", profileImage: "/images/PS.png" }
       ],
-      academicGuests: [
-        {
-          name: "Dr. Parag Kalkar",
-          position: "Pro-Vice Chancellor",
-          institution: "Savitribai Phule Pune University",
-        },
-        {
-          name: "Prof. Viraj Barge",
-          position: "Dean Training & Placement",
-          institution: "Zeal Education Society",
-        },
+      Juries: [
+        { name: "Ajay Mudliar", position: "Head Talent Acquisition", institution: "Tech Mahindra", profileImage: "/images/AM.png" },
+        { name: "Dinesh Gupta", position: "Director RMG", institution: "Capgemini", profileImage: "/images/DG.png" },
+        { name: "Rahul Bagale", position: "Group HR Head", institution: "Force Motors Limited", profileImage: "/images/RB.png" }
       ],
+      eventStats: {
+        companies: 25,
+        awardees: 50,
+        attendees: 500,
+        juryMembers: 10
+      }
     },
     {
       year: "2024",
-      venue: "HR Excellence Awards at Hyatt",
-      location: "Pune",
+      venue: "East Oxford Awards",
+      location: "Radisson, Pune",
       highlights: [
-        "Chief Guest: Shri Chandrakant Patil - Minister of Higher and Technical Education",
-        "Guest of Honour: Shri Harshvardhan Patil",
-        "Premium venue with distinguished corporate leaders",
-        "Comprehensive HR leadership recognition",
+        "Keynote Speaker- Dr Parag Kalkar - Pro-Vice Chancellor at Savitribai Phule Pune University",
+        "Interactive sessions on future of work and AI in HR",
+        "30+ prominent corporate leaders awarded for innovation",
+        "Partnerships with leading industry associations"
+      ],
+      chiefGuests: [
+        { name: "Dr Parag Kalkar", designation: "Pro-Vice Chancellor at Savitribai Phule Pune", profileImage: "/images/Parag.png" }
       ],
       notableAwardees: [
-        {
-          name: "Girish Desai",
-          company: "PCET",
-          position: "Executive Director",
-        },
-        {
-          name: "Dr. Geetika Madan",
-          company: "Weikfield",
-          position: "Group Head TM & OD",
-        },
-        {
-          name: "Neeraj Kumar Gupta",
-          company: "Knorr-Bremse",
-          position: "HR Director",
-        },
-        {
-          name: "Vinod Bidwaik",
-          company: "Alfa Laval",
-          position: "VP-HR & CHRO",
-        },
+        { name: "Mr. ArjunKale", company: "MIT College", position: "Sr. Manager Training & Placement", profileImage: "/images/AK.png"},
+        { name: "Dr.NileshUke", company: "KJEI's Trinity Academy of Engineering", position: "Principal", profileImage: "/images/Nilesh.png" },
+        { name: "Mr. Tushar S. Badhe", company: "Mauli College of Engineering and Technology Shegaon", position: "Head TPO", profileImage: "/images/TB.png" },
+        { name: "Dr.Shivajirao Kadam", company: "Bharati Vidyapeeth Deemed University", position: "Vice Chancellor", profileImage: "/images/SK.png" },
+        { name: "Mr.DnyaneshwarB Rao", company: "Unawane mmsi mertmmcoe managementinstitute pune", position: "Head TPO", profileImage: "/images/DR.png" },
+        { name: "Dr.Bharat Agarwal", company: "VIT University", position: "Vice CHancellor", profileImage: "/images/BA.png" }
+
+
       ],
-    },
-    {
-      year: "2023",
-      venue: "Global HR Summit & Awards - Suryadatta Group",
-      location: "Marigold Banquets, Pune",
-      highlights: [
-        "Partnership with Suryadatta Education Foundation",
-        "Focus on emerging HR technologies and practices",
-        "Panel discussions on future workforce trends",
-        "Recognition of innovation in people management",
-      ],
-      notableAwardees: [
-        {
-          name: "Ajay Mudliar",
-          company: "Tech Mahindra",
-          position: "Head-Talent Acquisition",
-        },
-        {
-          name: "Andrew Simon",
-          company: "eClerx Services",
-          position: "Head-Talent Acquisition",
-        },
-        {
-          name: "Swapna Sangari",
-          company: "Quick Heal",
-          position: "Vice President-HR",
-        },
-        {
-          name: "Rahul Bagale",
-          company: "Force Motors",
-          position: "Group Head-HR",
-        },
-      ],
-    },
-    {
-      year: "2023",
-      venue: "Corporate Leaders Golf Championship",
-      location: "Pinewoods Golf Club, Pune",
-      highlights: [
-        "Unique networking event combining business and sports",
-        "Corporate leaders showcasing sportsmanship",
-        "Strategic partnerships and collaborations",
-        "Premium venue for executive networking",
-      ],
-      notableGuests: [
-        {
-          name: "Dr. Sandeep Sahasrabudhe",
-          position: "Managing Director",
-          company: "Pinewoods Golf Club",
-        },
-        {
-          name: "Dr. Amit Andre",
-          position: "CEO",
-          company: "The Data Tech Labs",
-        },
-        { name: "Pankaj Ghode", position: "Founder & CEO", company: "Xcoode" },
-      ],
+      
+      eventStats: {
+        companies: 20,
+        awardees: 30,
+        attendees: 400,
+        juryMembers: 8
+      }
     },
     {
       year: "2022",
-      venue: "HR Meet & Greet - Jagadambha College",
-      location: "Kyriad Hotel, Pune",
+      venue: "HR Excellence Awards",
+      location: "Hyatt Regency, Mumbai",
       highlights: [
-        "Academic-Industry collaboration event",
-        "Focused on engineering education excellence",
-        "Regional recognition for Yavatmal institute",
-        "Bridge-building between academia and industry",
+        "Chief Guest: Shri Piyush Goyal - Union Minister of Commerce & Industry",
+        "Discussions on talent acquisition and retention strategies",
+        "Recognition of 40+ HR innovators and changemakers",
+        "Networking opportunities with HR professionals across India"
       ],
+      chiefGuests: [
+        { name: "Shri CHandrakant Patil", designation: "MINISTER OF HIGHER AND TECHNICAL  EDUCATION", profileImage: "/images/CP.png" },
+        { name: "Shri Harshvardhan Patil", designation: "FORMER MINISTER OF PARLIAMENTRY  AFFAIRS, MAHARASHTRA", profileImage: "/images/HP.png" }
+      ],
+      notableAwardees: [
+        { name: "Prafull Jaiswal", company: "ENTRATA INDIA", position: "HR Director", profileImage: "/images/Prafull.png" },
+        { name: "Sachin Aute", company: "CUMMINS GENERATOR", position: "HR Head", profileImage: "/images/SA.png" },
+        { name: "Ruchika Singh Tanwar", company: "UST GLOBAL", position: "Head Talent Acquisition  ", profileImage: "/images/RST.png" },
+        { name: "Preeti Ahuja", company: "ATLAS COPCO", position: "HR Leader", profileImage: "/images/PA.png" },
+        { name: "Shantanu Ghosal", company: "SCHAEFFLER INDIA", position: "Vice President-HR", profileImage: "/images/SG.png" },
+        { name: "Vaishali Darade", company: "MAGNA STYER", position: "Lead- Talent Acquisition", profileImage: "/images/VD.png" }
+      ],
+      Juries: [
+        { name: "Neeraj Kumar Gupta", position: "HR Director", institution: "KNORR-BREMSE", profileImage: "/images/NKG.png" },
+        { name: "Saurabh Shah", position: "VP -Human Capital", institution: "HABER", profileImage: "/images/SS.png" },
+        { name: "Girish Desai", position: "Executive Director", institution: "PCET", profileImage: "/images/GD.png" }
+      ],
+      eventStats: {
+        companies: 30,
+        awardees: 40,
+        attendees: 600,
+        juryMembers: 12
+      }
     },
+    {
+      year: "2023",
+      venue: "THE GLOBAL HR SUMMIT AND  AWARDS SURYADATTA GROUP OF  INSTITUTES",
+      location: "MARIGOLD  BANQUETS",
+      highlights: [
+      
+        "Focus on remote work challenges and digital transformation in HR",
+        "20+ awards for pioneering virtual HR initiatives",
+        "Global participation with attendees from 15+ countries"
+      ],
+      Juries: [
+        { name: "Abhijit Puri ", designation: "Senior Director", institution:"LTI-MINDTREE", profileImage: "/images/AP.png" },
+        { name: "Sudhir Mateti", designation: "Head-HR",institution:"SYNTEL TELECOM", profileImage: "/images/SM.png" },
+        { name: "Rajendra Raut", designation: "Head Talent Acquisition", institution:"JADE GLOBAL", profileImage: "/images/RR.png" },
+        { name: "Awantika Bharadwaj", designation: "Sr.Dir-Culture and People",institution:"ENSONO", profileImage: "/images/AB.png" },
+        
+      ],
+      notableAwardees: [
+        { name: "Ajay Mudliar", company: "TECH MAHINDRA", position: "Head-Talent Acquisition", profileImage: "/images/AM.png" },
+        { name: "Sangeeta Singh", company: "SINMPLIFY HEALTHCARE", position: "Sr. Dir.- People Functions  ", profileImage: "/images/Sangeeta.png" },
+        { name: "Swapna Sangari", company: "QUICK HEAL", position: "Vice President-HR", profileImage: "/images/Swapna.png" },
+        { name: "Niloy Bakshi", company: "VODAFONE", position: "Head-Talent Acquisition", profileImage: "/images/NB.png" },
+        { name: "Rahul Bagale", company: "FORCE MOTORS", position: "Group Head-HR", profileImage: "/images/RB.png" },
+        { name: "Raju PS", company: "LUMAX INDUSTRIES", position: "Exe VP-West Region", profileImage: "/images/RP.png" }
+      ],
+      
+      eventStats: {
+        companies: 15,
+        awardees: 20,
+        attendees: 700,
+        juryMembers: 7
+      }
+    }
   ];
 
-  const handleEventClick = (index) => {
-    setActiveEvent(index);
-  };
+  const currentEvent = events[activeEvent];
 
   return (
-    <section id="events" className="events-section">
-      <div className="section-container">
-        <div className="section-header">
-          <h2 className="section-title">PREVIOUS EVENTS</h2>
-          <p className="section-subtitle">
-            Celebrating Excellence Across Years
-          </p>
-        </div>
+    <section className="events-section">
+      <div className="container">
+        <h2 className="section-title">Our Legacy of Excellence</h2>
 
         <div className="events-main-container">
-          {/* Timeline Navigation */}
-          <div className="events-timeline-nav">
+          <nav className="events-timeline-nav">
             {events.map((event, index) => (
-              <div
+              <button
                 key={index}
-                className={`timeline-item ${
-                  activeEvent === index ? "active" : ""
-                }`}
-                onClick={() => handleEventClick(index)}
+                className={`timeline-item ${index === activeEvent ? 'active' : ''}`}
+                onClick={() => setActiveEvent(index)}
               >
-                <div className="timeline-year">{event.year}</div>
-                <div className="timeline-venue">{event.venue}</div>
-                <div className="timeline-location">{event.location}</div>
-              </div>
+                <span className="timeline-year">{event.year}</span>
+                <span className="timeline-venue">{event.venue}</span>
+              </button>
             ))}
-          </div>
+          </nav>
 
-          {/* Event Details */}
-          <div className="event-details-container">
-            <div className="event-card-main">
-              <div className="event-header">
-                <h3 className="event-title">{events[activeEvent].venue}</h3>
-                <div className="event-meta">
-                  <span className="event-year-large">
-                    {events[activeEvent].year}
-                  </span>
-                  <span className="event-location">
-                    {events[activeEvent].location}
-                  </span>
+          <div className="event-details-content">
+            <div className="event-header">
+              <div className="event-meta">
+                <span className="event-year-highlight">{currentEvent.year}</span>
+                <h3 className="event-title">{currentEvent.venue}</h3>
+                <p className="event-location">{currentEvent.location}</p>
+              </div>
+            </div>
+
+            <div className="event-highlights">
+              <h4>Highlights</h4>
+              <ul>
+                {currentEvent.highlights.map((highlight, index) => (
+                  <li key={index}>{highlight}</li>
+                ))}
+              </ul>
+            </div>
+
+            {currentEvent.chiefGuests && currentEvent.chiefGuests.length > 0 && (
+              <div className="chief-guests-section">
+                <h4>Chief Guest</h4>
+                <div className="guests-grid">
+                  {currentEvent.chiefGuests.map((guest, index) => (
+                    <div key={index} className="guest-card">
+                      <img src={guest.profileImage} alt={guest.name} className="guest-photo" />
+                      <p className="guest-name">{guest.name}</p>
+                      <p className="guest-designation">{guest.designation}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
+            )}
 
-              <div className="event-content">
-                <div className="event-highlights">
-                  <h4>Event Highlights</h4>
-                  <ul>
-                    {events[activeEvent].highlights.map((highlight, index) => (
-                      <li key={index}>{highlight}</li>
-                    ))}
-                  </ul>
+            {currentEvent.notableAwardees && currentEvent.notableAwardees.length > 0 && (
+              <div className="awardees-section">
+                <h4>Notable Awardees</h4>
+                <div className="awardees-grid">
+                  {currentEvent.notableAwardees.map((awardee, index) => (
+                    <div key={index} className="awardee-card">
+                      <img src={awardee.profileImage} alt={awardee.name} className="awardee-photo" />
+                      <p className="awardee-name">{awardee.name}</p>
+                      <p className="awardee-company">{awardee.company}</p>
+                      <p className="awardee-position">{awardee.position}</p>
+                    </div>
+                  ))}
                 </div>
-
-                {events[activeEvent].notableAwardees && (
-                  <div className="notable-awardees">
-                    <h4>Notable Awardees</h4>
-                    <div className="awardees-grid">
-                      {events[activeEvent].notableAwardees
-                        .slice(0, 4)
-                        .map((awardee, index) => (
-                          <div key={index} className="awardee-card">
-                            <h5>{awardee.name}</h5>
-                            <p className="awardee-position">
-                              {awardee.position}
-                            </p>
-                            <p className="awardee-company">{awardee.company}</p>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-
-                {events[activeEvent].academicGuests && (
-                  <div className="academic-guests">
-                    <h4>Distinguished Academic Guests</h4>
-                    <div className="guests-list">
-                      {events[activeEvent].academicGuests.map(
-                        (guest, index) => (
-                          <div key={index} className="guest-item">
-                            <h5>{guest.name}</h5>
-                            <p>
-                              {guest.position}, {guest.institution}
-                            </p>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {events[activeEvent].notableGuests && (
-                  <div className="notable-guests">
-                    <h4>Notable Guests</h4>
-                    <div className="guests-list">
-                      {events[activeEvent].notableGuests.map((guest, index) => (
-                        <div key={index} className="guest-item">
-                          <h5>{guest.name}</h5>
-                          <p>
-                            {guest.position}, {guest.company}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
+            )}
 
+            {currentEvent.academicGuests && currentEvent.academicGuests.length > 0 && (
+              <div className="academic-guests-section">
+                <h4>Academic Guests</h4>
+                <div className="guests-grid">
+                  {currentEvent.academicGuests.map((guest, index) => (
+                    <div key={index} className="guest-card">
+                      <img src={guest.profileImage} alt={guest.name} className="guest-photo" />
+                      <p className="guest-name">{guest.name}</p>
+                      <p className="guest-designation">{guest.position}, {guest.institution}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {currentEvent.Juries && currentEvent.Juries.length > 0 && (
+              <div className="academic-guests-section">
+                <h4>Juries</h4>
+                <div className="guests-grid">
+                  {currentEvent.Juries.map((guest, index) => (
+                    <div key={index} className="guest-card">
+                      <img src={guest.profileImage} alt={guest.name} className="guest-photo" />
+                      <p className="guest-name">{guest.name}</p>
+                      <p className="guest-designation">{guest.position}, {guest.institution}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="event-stats-section">
+              <h4>Event Statistics</h4>
               <div className="event-stats">
                 <div className="stat-item">
-                  <span className="stat-number">500+</span>
+                  <span className="stat-number">{currentEvent.eventStats.attendees}+</span>
                   <span className="stat-label">Attendees</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">50+</span>
+                  <span className="stat-number">{currentEvent.eventStats.awardees}+</span>
                   <span className="stat-label">Awards</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">25+</span>
+                  <span className="stat-number">{currentEvent.eventStats.companies}+</span>
                   <span className="stat-label">Companies</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">10+</span>
+                  <span className="stat-number">{currentEvent.eventStats.juryMembers}+</span>
                   <span className="stat-label">Jury Members</span>
                 </div>
               </div>
@@ -299,7 +263,9 @@ const PreviousEvents = () => {
           </div>
         </div>
 
-        {/* Legacy Section with CountUp */}
+        
+
+        {/* Legacy Section with CountUp
         <div className="legacy-section" ref={legacyRef}>
           <h3>Our Legacy of Excellence</h3>
           <div className="legacy-stats">
@@ -322,7 +288,7 @@ const PreviousEvents = () => {
               <p>Years of Excellence</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

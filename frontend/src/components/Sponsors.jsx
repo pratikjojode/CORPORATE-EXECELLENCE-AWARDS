@@ -23,7 +23,7 @@ const Sponsors = () => {
               Click below to view detailed sponsorship packages and
               collaboration options.
             </p>
-            <a href="/sponsors-details" className="contact-btn">
+            <a href="/Sponsors" className="contact-btn">
               View Sponsorship Details
             </a>
           </div>
