@@ -39,14 +39,6 @@ const Header = () => {
                 Sponsors
               </Link>
             </li>
-            <li>
-              <a
-                href="#contact"
-                className={location.hash === "#contact" ? "active-link" : ""}
-              >
-                Contact
-              </a>
-            </li>
           </ul>
         </nav>
 

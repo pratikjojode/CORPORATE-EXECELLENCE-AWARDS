@@ -154,7 +154,7 @@ const HeroSection = () => {
 
         <div className="event-details">
           <p>28th JUNE, 2024 | Friday</p>
-          <p>6 PM Onward (9 PM Dinner)</p>
+          <p>Morning 9 AM to Afternoon 4PM</p>
         </div>
 
         <div className="cta-buttons">
@@ -165,6 +165,15 @@ const HeroSection = () => {
               rel="noopener noreferrer"
             >
               Nominate Now
+            </a>
+          </button>
+          <button className="primary-btn">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfGfmANTWGKhpEXYI7yNkt1jboJjGZF_NZmLhPAewJ7jXksGw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Want to Attend the Event?
             </a>
           </button>
           <button className="secondary-btn">Learn More</button>
