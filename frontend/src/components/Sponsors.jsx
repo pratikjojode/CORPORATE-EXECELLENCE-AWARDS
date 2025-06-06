@@ -1,22 +1,10 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+
 import "../Styles/Sponsors.css";
 
 const Sponsors = () => {
   return (
     <>
-      <Helmet>
-        <title>Corporate Excellence Awards | Sponsorship Opportunities</title>
-        <meta
-          name="description"
-          content="Discover exclusive sponsorship packages at the Corporate Excellence Awards. Partner with us to elevate your brand visibility and connect with industry leaders."
-        />
-        <link
-          rel="canonical"
-          href="https://corporateexcellenceawards.com/Sponsors"
-        />
-      </Helmet>
-
       <section id="sponsors-intro" className="sponsors-section">
         <div className="section-container">
           <div className="sponsors-header">

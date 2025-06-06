@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet-async";
+
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import "../Styles/Sponsors.css";
@@ -84,17 +84,6 @@ const SponsorshipDetails = () => {
   return (
     <>
       <Header />
-      <Helmet>
-        <title>Corporate Excellence Awards | Sponsorship Details</title>
-        <meta
-          name="description"
-          content="Explore sponsorship packages for the Corporate Excellence Awards. Partner with us for maximum brand exposure and unique collaboration opportunities."
-        />
-        <link
-          rel="canonical"
-          href="https://corporateexcellenceawards.com/sponsors-details"
-        />
-      </Helmet>
 
       <section id="sponsors-details" className="sponsors-section">
         <div className="section-container">
