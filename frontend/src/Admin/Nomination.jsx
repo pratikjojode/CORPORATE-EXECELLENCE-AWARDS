@@ -85,7 +85,7 @@ const formatUrl = (url) => {
   return null;
 };
 
-const PAGE_SIZE = 10; // Number of nominations per page
+const PAGE_SIZE = 5;
 
 const Nomination = () => {
   const [nominationData, setNominationData] = useState([]);
