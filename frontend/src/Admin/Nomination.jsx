@@ -20,7 +20,6 @@ const headers = [
   "Declaration",
 ];
 
-// Helper: Smart truncation based on field type and view
 const smartTruncate = (content, fieldName, viewType = "table") => {
   if (typeof content !== "string") return content || "N/A";
 
