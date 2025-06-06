@@ -24,7 +24,7 @@ const Footer = () => {
           </p>
           <div className="social-icons">
             <a
-              href="https://facebook.com"
+              // href="https://facebook.com"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
@@ -32,7 +32,7 @@ const Footer = () => {
               <FaFacebook className="icon" />
             </a>
             <a
-              href="https://instagram.com"
+              // href=https://instagram.com"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
@@ -40,7 +40,7 @@ const Footer = () => {
               <FaInstagram className="icon" />
             </a>
             <a
-              href="https://youtube.com"
+              // href="https://youtube.com"
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
@@ -48,7 +48,7 @@ const Footer = () => {
               <FaYoutube className="icon" />
             </a>
             <a
-              href="https://twitter.com"
+              // href="https://twitter.com"
               aria-label="Twitter"
               target="_blank"
               rel="noopener noreferrer"
@@ -56,7 +56,7 @@ const Footer = () => {
               <FaTwitter className="icon" />
             </a>
             <a
-              href="https://linkedin.com"
+              // href="https://linkedin.com"
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
@@ -100,8 +100,8 @@ const Footer = () => {
           <p>For more information, Contact us:</p>
           <p>
             <i className="contact-icon">📞</i>{" "}
-            <a href="tel:+918888181889">88881 81889</a>,{" "}
-            <a href="tel:+918908333901">89083 33901</a>
+            <a href="tel:+918888181889">8308333301</a>{" "}
+            
           </p>
           <p>
             <i className="contact-icon">✉️</i>{" "}
@@ -110,7 +110,7 @@ const Footer = () => {
             </a>
           </p>
           <div className="newsletter">
-            <h4>Subscribe to our newsletter</h4>
+            <h4>Subscribe to Us</h4>
             <form>
               <input type="email" placeholder="Your email address" />
               <button type="submit">Subscribe</button>

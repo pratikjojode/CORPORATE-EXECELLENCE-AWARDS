@@ -157,7 +157,7 @@ const SponsorshipDetails = () => {
                 role="region"
                 aria-live="polite"
               >
-                <p>Phone: +91 98765 43210</p>
+                <p>Phone: 8308333301</p>
                 <p>Email: contact@corporateawards.com</p>
               </div>
             )}
