@@ -8,7 +8,7 @@ import Vision from "../Components/Vision";
 import PreviousEvents from "../Components/PreviousEvents";
 import Sponsors from "../Components/Sponsors";
 import Footer from "../Components/Footer";
-import HeroSection from "../components/HeroSection";
+import HeroSection from "../Components/HeroSection";
 
 const HomePage = () => {
   useEffect(() => {
