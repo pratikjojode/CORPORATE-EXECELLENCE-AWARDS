@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom"; // updated
 import "../Styles/Header.css";
 import logo from "../assets/corporate2.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Marquee from "./Marquee";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +23,7 @@ const Header = () => {
 
   return (
     <header className="header">
+      <Marquee />
       <div className="header-container">
         <div className="logo">
           <img src={logo} className="logo-main" alt="Logo" />

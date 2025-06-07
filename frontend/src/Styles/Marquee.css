@@ -1,0 +1,31 @@
+.marquee-container {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #1a1a1a,
+    #000000
+  ); /* Darker black gradient */
+  color: #ffd700; /* Rich gold color */
+  overflow: hidden;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+  color: #ffd700; /* Gold text */
+  text-shadow: 0 0 6px #b8860b; /* subtle darker gold glow */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
