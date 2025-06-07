@@ -2,38 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://corporateexcellenceawards.com/</loc>
-    <priority>1.00</priority>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://corporateexcellenceawards.com/Sponsors</loc>
+    <loc>https://www.corporateexcellenceawards.com/</loc>
+    <lastmod>2025-06-07</lastmod>
     <priority>1.00</priority>
     <changefreq>daily</changefreq>
   </url>
 
   <url>
-    <loc>https://corporateexcellenceawards.com/adminLogin</loc>
-    <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://corporateexcellenceawards.com/admin-dashboard</loc>
-    <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://corporateexcellenceawards.com/admin-dashboard/nominations</loc>
-    <priority>0.70</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://corporateexcellenceawards.com/admin-dashboard/attendance</loc>
-    <priority>0.70</priority>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.corporateexcellenceawards.com/Sponsors</loc>
+    <lastmod>2025-06-07</lastmod>
+    <priority>1.00</priority>
+    <changefreq>daily</changefreq>
   </url>
 
 </urlset>

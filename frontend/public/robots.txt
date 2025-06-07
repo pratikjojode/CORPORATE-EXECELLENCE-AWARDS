@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
-Allow: /assets/logo.png
-Sitemap: https://corporateexcellenceawards.com/sitemap.xml
+Allow: /assets/corporate2.jpg
+Disallow: /adminLogin
+Disallow: /admin-dashboard/
+Sitemap: https://www.corporateexcellenceawards.com/sitemap.xml
