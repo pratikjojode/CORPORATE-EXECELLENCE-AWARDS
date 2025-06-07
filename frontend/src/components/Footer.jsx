@@ -101,12 +101,11 @@ const Footer = () => {
           <p>
             <i className="contact-icon">📞</i>{" "}
             <a href="tel:+918888181889">8308333301</a>{" "}
-            
           </p>
           <p>
             <i className="contact-icon">✉️</i>{" "}
-            <a href="mailto:info@maharashtraeducationawards.com">
-              info@maharashtraeducationawards.com
+            <a href="mailto:info@corporateexcellenceawards.com">
+              info@corporateexcellenceawards.com
             </a>
           </p>
           <div className="newsletter">

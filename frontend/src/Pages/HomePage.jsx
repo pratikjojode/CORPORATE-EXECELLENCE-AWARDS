@@ -9,7 +9,7 @@ import PreviousEvents from "../Components/PreviousEvents";
 import Sponsors from "../Components/Sponsors";
 import Footer from "../Components/Footer";
 import HeroSection from "../Components/HeroSection";
-// import ModiPage from "../Components/ModiPage";
+import ModiPage from "../Components/ModiPage";
 
 const HomePage = () => {
   useEffect(() => {
@@ -23,7 +23,7 @@ const HomePage = () => {
         <HeroSection />
         <Location />
         <Nominees />
-        {/* <ModiPage /> */}
+        <ModiPage />
         <Vision />
         <PreviousEvents />
         <Sponsors />
