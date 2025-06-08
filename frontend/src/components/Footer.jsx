@@ -13,7 +13,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* About Section */}
         <div className="footer-section">
           <h3>About Corporate Excellence Awards</h3>
           <p>
@@ -24,7 +23,7 @@ const Footer = () => {
           </p>
           <div className="social-icons">
             <a
-              // href="https://facebook.com"
+              href="https://facebook.com"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
@@ -32,7 +31,7 @@ const Footer = () => {
               <FaFacebook className="icon" />
             </a>
             <a
-              // href=https://instagram.com"
+              href="https://instagram.com"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
@@ -40,7 +39,7 @@ const Footer = () => {
               <FaInstagram className="icon" />
             </a>
             <a
-              // href="https://youtube.com"
+              href="https://youtube.com"
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
@@ -48,7 +47,7 @@ const Footer = () => {
               <FaYoutube className="icon" />
             </a>
             <a
-              // href="https://twitter.com"
+              href="https://twitter.com"
               aria-label="Twitter"
               target="_blank"
               rel="noopener noreferrer"
@@ -56,7 +55,7 @@ const Footer = () => {
               <FaTwitter className="icon" />
             </a>
             <a
-              // href="https://linkedin.com"
+              href="https://linkedin.com"
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"

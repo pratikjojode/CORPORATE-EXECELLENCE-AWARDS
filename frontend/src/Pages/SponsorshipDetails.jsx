@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import "../Styles/Sponsors.css";
-
+import "../Styles/SponsorshipDetails.css"; // Assuming you have a CSS file for styling
 const SponsorshipDetails = () => {
   const [showContactInfo, setShowContactInfo] = useState(false);
 
@@ -85,11 +83,11 @@ const SponsorshipDetails = () => {
     <>
       <Header />
 
-      <section id="sponsors-details" className="sponsors-section">
-        <div className="section-container">
-          <div className="sponsors-header">
-            <h2 className="section-title">Partnership Opportunities</h2>
-            <p className="section-subtitle">
+      <section id="sponsorship-details" className="sponsorship-section">
+        <div className="sponsorship-container">
+          <div className="sponsorship-header">
+            <h2 className="sponsorship-title">Partnership Opportunities</h2>
+            <p className="sponsorship-subtitle">
               Join us in celebrating corporate excellence and connect with 1000+
               decision makers, 25000+ professionals, and reach 50000+ audience
               across our digital platforms.
@@ -100,18 +98,18 @@ const SponsorshipDetails = () => {
             {sponsorshipPackages.map((pkg, index) => (
               <div key={index} className="sponsorship-card">
                 <div
-                  className="card-header"
+                  className="sponsorship-card-header"
                   style={{ borderBottomColor: pkg.color }}
                 >
-                  <h3 className="package-name">{pkg.category}</h3>
-                  <div className="package-price">{pkg.price}</div>
+                  <h3 className="sponsorship-package-name">{pkg.category}</h3>
+                  <div className="sponsorship-package-price">{pkg.price}</div>
                 </div>
 
-                <div className="card-content">
-                  <p className="highlight">{pkg.highlight}</p>
-                  <ul className="package-benefits-list">
+                <div className="sponsorship-card-content">
+                  <p className="sponsorship-highlight">{pkg.highlight}</p>
+                  <ul className="sponsorship-package-benefits-list">
                     {pkg.benefits.map((benefit, i) => (
-                      <li key={i} className="benefit-item">
+                      <li key={i} className="sponsorship-benefit-item">
                         {benefit}
                       </li>
                     ))}
@@ -122,8 +120,12 @@ const SponsorshipDetails = () => {
           </div>
 
           <div className="collaboration-section">
-            <h3>Additional Collaboration Opportunities</h3>
-            <p>Join us as a collaborative partner for ₹2 Lakhs only:</p>
+            <h3 className="collaboration-title">
+              Additional Collaboration Opportunities
+            </h3>
+            <p className="collaboration-description">
+              Join us as a collaborative partner for ₹2 Lakhs only:
+            </p>
             <div className="collaboration-grid">
               {collaborationOptions.map((option, index) => (
                 <div key={index} className="collaboration-card">
@@ -133,15 +135,17 @@ const SponsorshipDetails = () => {
             </div>
           </div>
 
-          <div className="contact-section">
-            <h3>Ready to Partner With Us?</h3>
-            <p>
+          <div className="sponsorship-contact-section">
+            <h3 className="sponsorship-contact-title">
+              Ready to Partner With Us?
+            </h3>
+            <p className="sponsorship-contact-description">
               Contact our sponsorship team for custom packages and detailed
               information.
             </p>
-            <div className="contact-actions">
+            <div className="sponsorship-contact-actions">
               <button
-                className="contact-btn"
+                className="sponsorship-contact-btn"
                 onClick={toggleContactInfo}
                 aria-expanded={showContactInfo}
                 aria-controls="contact-info"
@@ -153,12 +157,17 @@ const SponsorshipDetails = () => {
             {showContactInfo && (
               <div
                 id="contact-info"
-                className="contact-info-reveal"
+                className="sponsorship-contact-info-reveal"
                 role="region"
                 aria-live="polite"
               >
                 <p>Phone: 8308333301</p>
-                <p>Email: contact@corporateawards.com</p>
+                <p style={{ color: "#FFD700", fontWeight: "bold" }}>
+                  Email:{" "}
+                  <a href="mailto:info@corporateexcellenceawards.com">
+                    info@corporateexcellenceawards.com
+                  </a>
+                </p>
               </div>
             )}
           </div>

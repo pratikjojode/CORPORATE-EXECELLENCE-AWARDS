@@ -7,8 +7,9 @@ import Vision from "../Components/Vision";
 import PreviousEvents from "../Components/PreviousEvents";
 import Sponsors from "../Components/Sponsors";
 import Footer from "../Components/Footer";
-import HeroSection from "../Components/HeroSection";
+
 import ModiPage from "../Components/ModiPage";
+import HeroSection from "../components/HeroSection";
 
 const HomePage = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
@@ -18,7 +19,7 @@ const HomePage = () => {
 
     const timer = setTimeout(() => {
       setShowLocationPopup(true);
-    }, 5000); // 5 seconds delay
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);

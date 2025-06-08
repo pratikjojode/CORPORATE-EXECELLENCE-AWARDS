@@ -136,7 +136,12 @@ const HeroSection = () => {
       <div className="floating-element">🎖</div>
 
       <div className="hero-content">
-        {/* ✅ Sponsor Logos */}
+        <h1>THE CORPORATE EXCELLENCE AWARDS</h1>
+        <p className="ethos">
+          OUR GLOBAL ETHOS: 'ONE EARTH, ONE FAMILY'. EMBRACE THE RESPONSIBILITY
+        </p>
+        <h2>DISCOVERING EXCELLENCE IN SUCCESSFUL BUSINESS</h2>
+        <p>Presented By</p>
         <div className="sponsor-logos">
           <img src={jobizaaLogo} alt="Jobizaa Logo" className="sponsor-logo" />
           <img
@@ -145,18 +150,10 @@ const HeroSection = () => {
             className="sponsor-logo"
           />
         </div>
-
-        <h1>THE CORPORATE EXCELLENCE AWARDS</h1>
-        <p className="ethos">
-          OUR GLOBAL ETHOS: 'ONE EARTH, ONE FAMILY'. EMBRACE THE RESPONSIBILITY
-        </p>
-        <h2>DISCOVERING EXCELLENCE IN SUCCESSFUL BUSINESS</h2>
-
         <div className="event-details">
-          <p>28th JUNE, 2024 | Friday</p>
+          <p>28th JUNE, 2025 | Friday</p>
           <p>Morning 9 AM to Afternoon 4PM</p>
         </div>
-
         <div className="cta-buttons">
           <button className="primary-btn">
             <a

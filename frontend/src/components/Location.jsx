@@ -3,7 +3,7 @@ import "../Styles/Location.css";
 
 const Location = () => {
   const openGoogleMaps = () => {
-    window.open("https://www.google.com/maps?q=18.5204,73.8567", "_blank");
+    window.open("https://maps.app.goo.gl/9Zpsvr3bR14yrtNbA", "_blank");
   };
 
   return (
