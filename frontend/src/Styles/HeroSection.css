@@ -685,6 +685,7 @@ h2 {
     min-height: calc(100vh - var(--header-height));
     padding-top: 30px;
     padding-bottom: 30px;
+    margin: 90px 0 0;
   }
 
   .hero-content {
@@ -750,6 +751,7 @@ h2 {
     min-height: calc(100vh - var(--header-height));
     padding-top: 20px;
     padding-bottom: 20px;
+    margin: 90px 0 0;
   }
 
   .hero-content {
@@ -841,6 +843,7 @@ h2 {
     min-height: calc(100vh - var(--header-height));
     padding-top: 15px;
     padding-bottom: 15px;
+    margin: 90px 0 0;
   }
 
   .hero-content {
