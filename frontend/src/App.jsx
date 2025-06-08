@@ -8,6 +8,7 @@ import Attendance from "./Admin/Attendance";
 import "./App.css";
 import "./index.css";
 import SponsorshipDetails from "./Pages/SponsorshipDetails";
+import Insights from "./Pages/Insights";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/Sponsors" element={<SponsorshipDetails />} />
+        <Route path="/Insights" element={<Insights/>} />
         <Route path="/adminLogin" element={<AdminLogin />} />
         <Route path="/admin-dashboard" element={<Dashboard />}>
           <Route index element={<h2>Welcome to the Admin Dashboard</h2>} />

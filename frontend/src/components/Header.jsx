@@ -41,6 +41,11 @@ const Header = () => {
                 Sponsors
               </Link>
             </li>
+            <li>
+              <Link to="/Insights" className={isActive("/Insights")}>
+                Insights
+              </Link>
+            </li>
           </ul>
         </nav>
 
