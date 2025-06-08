@@ -23,7 +23,9 @@ const AdminLogin = () => {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("adminToken", password);
+        // Save a simple logged-in flag + timestamp, NOT the password
+        localStorage.setItem("isAdminLoggedIn", "true");
+        localStorage.setItem("adminLoginTime", Date.now().toString());
         navigate("/admin-dashboard/nominations");
       } else {
         setError(data.message || "Incorrect password. Please try again.");
@@ -38,10 +40,8 @@ const AdminLogin = () => {
   return (
     <div className="admin-login-container">
       <div className="admin-login-card">
-        <div className="admin-login-logo">
-          <span role="img" aria-label="Shield">
-            🛡️
-          </span>
+        <div className="admin-login-logo" aria-label="Shield icon" role="img">
+          🛡️
         </div>
         <h2>Welcome, Admin</h2>
         <p className="admin-login-subtitle">Sign in to access your dashboard</p>
