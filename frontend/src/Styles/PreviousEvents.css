@@ -1,6 +1,6 @@
 /* Previous Events Section - Gold & Black Theme */
 .events-section {
-  padding: 6rem 0;
+  padding: 6rem 0; /* Original for larger screens */
   background: linear-gradient(
     135deg,
     #000000 0%,
@@ -11,6 +11,7 @@
   );
   position: relative;
   overflow: hidden;
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .events-section::before {
@@ -20,7 +21,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,215,0,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,215,0,0.03)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,215,0,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,215,0,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,215,0,0.03)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,215,0,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>')
+    repeat;
   opacity: 0.1;
   z-index: 1;
 }
@@ -28,16 +30,17 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem; /* Original for larger screens */
   position: relative;
   z-index: 2;
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .section-title {
-  font-size: 3.5rem;
+  font-size: 3.5rem; /* Original for larger screens */
   color: #ffd700; /* Gold */
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 4rem; /* Original for larger screens */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -46,28 +49,30 @@
 
 .events-main-container {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 3rem;
+  grid-template-columns: 280px 1fr; /* Original for larger screens */
+  gap: 3rem; /* Original for larger screens */
   background: rgba(26, 26, 26, 0.8);
   border-radius: 12px;
-  padding: 2.5rem;
+  padding: 2.5rem; /* Original for larger screens */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 215, 0, 0.2);
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .events-timeline-nav {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding-right: 1.5rem;
-  border-right: 2px solid rgba(255, 215, 0, 0.3);
+  flex-direction: column; /* Original for larger screens */
+  gap: 1.5rem; /* Original for larger screens */
+  padding-right: 1.5rem; /* Original for larger screens */
+  border-right: 2px solid rgba(255, 215, 0, 0.3); /* Original for larger screens */
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .timeline-item {
   background: rgba(255, 215, 0, 0.08);
   border: 1px solid rgba(255, 215, 0, 0.3);
   color: #ffffff;
-  padding: 1.2rem 1.5rem;
+  padding: 1.2rem 1.5rem; /* Original for larger screens */
   border-radius: 8px;
   text-align: left;
   cursor: pointer;
@@ -77,16 +82,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .timeline-item::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0) 50%, rgba(255,215,0,0.1) 100%);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(255, 215, 0, 0) 50%,
+    rgba(255, 215, 0, 0.1) 100%
+  );
   transform: translateX(-100%);
   transition: transform 0.4s ease-in-out;
 }
@@ -97,19 +108,27 @@
 
 .timeline-item:hover,
 .timeline-item.active {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.2),
+    rgba(255, 215, 0, 0.05)
+  );
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
   border-color: #ffd700;
 }
 
 .timeline-item.active {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.3),
+    rgba(255, 215, 0, 0.1)
+  );
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
 }
 
 .timeline-year {
-  font-size: 1.8rem;
+  font-size: 1.8rem; /* Original for larger screens */
   font-weight: 700;
   color: #ffd700;
   margin-bottom: 0.5rem;
@@ -118,7 +137,7 @@
 }
 
 .timeline-venue {
-  font-size: 1rem;
+  font-size: 1rem; /* Original for larger screens */
   color: #e0e0e0;
   line-height: 1.4;
   position: relative;
@@ -128,15 +147,16 @@
 .event-details-content {
   background: #1a1a1a;
   border-radius: 8px;
-  padding: 2.5rem;
+  padding: 2.5rem; /* Original for larger screens */
   box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1);
   border: 1px solid rgba(255, 215, 0, 0.15);
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .event-header {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2rem; /* Original for larger screens */
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px dashed rgba(255, 215, 0, 0.3);
@@ -147,7 +167,7 @@
 }
 
 .event-year-highlight {
-  font-size: 3.5rem;
+  font-size: 3.5rem; /* Original for larger screens */
   font-weight: 800;
   color: #ffd700;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
@@ -157,14 +177,14 @@
 }
 
 .event-title {
-  font-size: 2.2rem;
+  font-size: 2.2rem; /* Original for larger screens */
   color: #ffffff;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .event-location {
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Original for larger screens */
   color: #b0b0b0;
   font-style: italic;
 }
@@ -174,7 +194,7 @@
 .chief-guests-section h4,
 .academic-guests-section h4,
 .event-stats-section h4 {
-  font-size: 1.8rem;
+  font-size: 1.8rem; /* Original for larger screens */
   color: #ffd700;
   margin-bottom: 1.5rem;
   border-left: 4px solid #ffd700;
@@ -195,14 +215,14 @@
 
 .event-highlights li {
   color: #e0e0e0;
-  font-size: 1rem;
+  font-size: 1rem; /* Original for larger screens */
   line-height: 1.5;
   position: relative;
   padding-left: 1.8rem;
 }
 
 .event-highlights li::before {
-  content: '★'; /* Star icon for list items */
+  content: "★"; /* Star icon for list items */
   color: #ffd700;
   position: absolute;
   left: 0;
@@ -213,8 +233,11 @@
 .awardees-grid,
 .guests-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); /* Original for larger screens */
+  gap: 2rem; /* Original for larger screens */
   margin-top: 1.5rem;
 }
 
@@ -222,7 +245,7 @@
 .guest-card {
   background: rgba(50, 50, 50, 0.7);
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 1.5rem; /* Original for larger screens */
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 215, 0, 0.1);
@@ -231,6 +254,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .awardee-card:hover,
@@ -241,19 +265,35 @@
 
 .awardee-photo,
 .guest-photo {
-  width: 120px;
-  height: 120px;
+  width: 120px; /* Original for larger screens */
+  height: 120px; /* Original for larger screens */
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
   border: 3px solid #ffd700;
   padding: 3px; /* Creates a gold ring effect */
   background-color: #333; /* Placeholder background */
+  display: block; /* Ensures the background color covers the area */
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box; /* Added for consistent box model */
+}
+
+.guest-photo::before,
+.awardee-photo::before {
+  content: "👤"; /* Unicode person icon */
+  font-size: 4rem; /* Original for larger screens */
+  color: #888;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1; /* Adjust to center vertically */
 }
 
 .awardee-name,
 .guest-name {
-  font-size: 1.2rem;
+  font-size: 1.2rem; /* Original for larger screens */
   font-weight: 600;
   color: #ffd700;
   margin-bottom: 0.3rem;
@@ -262,7 +302,7 @@
 .awardee-company,
 .awardee-position,
 .guest-designation {
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* Original for larger screens */
   color: #b0b0b0;
   line-height: 1.4;
 }
@@ -275,21 +315,22 @@
 
 .event-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr); /* Original for larger screens */
+  gap: 1.5rem; /* Original for larger screens */
   text-align: center;
 }
 
 .stat-item {
   background: rgba(255, 215, 0, 0.1);
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem; /* Original for larger screens */
   border-radius: 8px;
   border: 1px solid rgba(255, 215, 0, 0.3);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Original for larger screens */
   font-weight: 700;
   color: #ffd700;
   display: block;
@@ -297,7 +338,7 @@
 }
 
 .stat-label {
-  font-size: 1rem;
+  font-size: 1rem; /* Original for larger screens */
   color: #e0e0e0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -306,15 +347,16 @@
 .legacy-section {
   margin-top: 5rem;
   text-align: center;
-  padding: 3rem 0;
+  padding: 3rem 0; /* Original for larger screens */
   background: rgba(255, 215, 0, 0.05);
   border-radius: 12px;
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .legacy-section h3 {
-  font-size: 2.8rem;
+  font-size: 2.8rem; /* Original for larger screens */
   color: #ffd700;
   margin-bottom: 2.5rem;
   font-weight: 700;
@@ -325,7 +367,7 @@
 .legacy-stats {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 3rem; /* Original for larger screens */
   flex-wrap: wrap;
 }
 
@@ -333,10 +375,11 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 215, 0, 0.15);
   border-radius: 10px;
-  padding: 2rem;
-  min-width: 200px;
+  padding: 2rem; /* Original for larger screens */
+  min-width: 200px; /* Original for larger screens */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  box-sizing: border-box; /* Added for consistent box model */
 }
 
 .legacy-item:hover {
@@ -346,7 +389,7 @@
 }
 
 .legacy-item h4 {
-  font-size: 3rem;
+  font-size: 3rem; /* Original for larger screens */
   color: #ffd700;
   margin-bottom: 0.5rem;
   font-weight: 800;
@@ -355,7 +398,7 @@
 }
 
 .legacy-item p {
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Original for larger screens */
   color: #e0e0e0;
 }
 
@@ -367,7 +410,11 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 215, 0, 0.05) 0%,
+    transparent 70%
+  );
   animation: rotateBackground 20s linear infinite;
   z-index: 0;
 }
@@ -406,7 +453,7 @@
 
 .guest-photo::before,
 .awardee-photo::before {
-  content: '👤'; /* Unicode person icon */
+  content: "👤"; /* Unicode person icon */
   font-size: 4rem;
   color: #888;
   position: absolute;
@@ -416,74 +463,74 @@
   line-height: 1; /* Adjust to center vertically */
 }
 
-
 /* Responsive Design */
+/* Styles for screens up to 1024px (includes tablets in landscape and smaller laptops) */
 @media (max-width: 1024px) {
   .events-main-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack content and timeline */
     gap: 2rem;
   }
 
   .events-timeline-nav {
-    flex-direction: row;
+    flex-direction: row; /* Horizontal scroll for timeline */
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     padding-bottom: 1rem;
     gap: 1rem;
-    border-right: none;
-    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    border-right: none; /* Remove vertical border */
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3); /* Add horizontal border */
     padding-right: 0;
+    margin-bottom: 1rem; /* Space between nav and content */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  }
+
+  .events-timeline-nav::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
   }
 
   .timeline-item {
-    min-width: 280px;
-    flex-shrink: 0;
+    min-width: 280px; /* Ensure timeline items have a minimum width */
+    flex-shrink: 0; /* Crucial: Prevents items from shrinking when scrolling horizontally */
   }
 
   .timeline-item:hover,
   .timeline-item.active {
-    transform: translateY(-6px) scale(1.02);
+    transform: translateY(-6px) scale(1.02); /* Adjust hover/active effect for smaller screens */
   }
 }
 
+/* Styles for screens up to 768px (includes tablets in portrait) */
 @media (max-width: 768px) {
   .section-title {
-    font-size: 2.8rem;
+    font-size: clamp(2.8rem, 6vw, 3rem); /* Fluid font for title */
+    margin-bottom: 3rem;
+  }
+
+  .container {
+    padding: 0 1.5rem; /* Reduce horizontal padding */
+  }
+
+  .events-main-container {
+    padding: 2rem; /* Adjust container padding */
   }
 
   .event-header {
-    flex-direction: column;
+    flex-direction: column; /* Stack event header elements */
     gap: 1rem;
-  }
-
-  .event-meta {
-    align-items: flex-start;
-  }
-
-  .awardees-grid,
-  .guests-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .event-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .legacy-stats {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .legacy-item {
-    min-width: unset;
-    width: 100%;
+    align-items: flex-start; /* Align meta to the start when stacked */
   }
 
   .event-year-highlight {
-    font-size: 2.8rem;
+    font-size: clamp(2.8rem, 7vw, 3rem); /* Fluid font for highlight year */
   }
 
   .event-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 5vw, 2rem); /* Fluid font for event title */
+  }
+
+  .event-location {
+    font-size: clamp(1rem, 3.5vw, 1.1rem); /* Fluid font for location */
   }
 
   .event-highlights h4,
@@ -492,37 +539,230 @@
   .academic-guests-section h4,
   .event-stats-section h4,
   .legacy-section h3 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .events-section {
-    padding: 4rem 0;
-  }
-
-  .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 2.5rem;
+    font-size: clamp(
+      1.5rem,
+      4.5vw,
+      1.7rem
+    ); /* Fluid font for section headers */
+    margin-bottom: 1rem; /* Reduce margin */
+    padding-left: 0.8rem; /* Adjust padding for border */
   }
 
-  .events-main-container {
-    padding: 1.5rem;
+  .awardees-grid,
+  .guests-grid {
+    grid-template-columns: 1fr; /* Stack awardee/guest cards */
+    gap: 1.5rem;
   }
 
-  .event-details-content {
-    padding: 1.5rem;
+  .awardee-photo,
+  .guest-photo {
+    width: 100px; /* Slightly smaller photos */
+    height: 100px;
+    margin-bottom: 0.8rem;
+  }
+
+  .guest-photo::before,
+  .awardee-photo::before {
+    font-size: 3.5rem; /* Adjust icon size with photo */
+  }
+
+  .awardee-name,
+  .guest-name {
+    font-size: clamp(1.1rem, 3.5vw, 1.2rem); /* Fluid name font */
+  }
+
+  .awardee-company,
+  .awardee-position,
+  .guest-designation {
+    font-size: clamp(0.9rem, 3vw, 0.95rem); /* Fluid designation font */
+  }
+
+  .event-stats {
+    grid-template-columns: repeat(2, 1fr); /* Keep 2 columns for stats */
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1rem 0.8rem; /* Adjust padding */
   }
 
   .stat-number {
-    font-size: 2rem;
+    font-size: clamp(2rem, 6vw, 2.2rem); /* Fluid stat number font */
   }
 
   .stat-label {
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 3.5vw, 1rem); /* Fluid stat label font */
+  }
+
+  .legacy-section {
+    margin-top: 4rem; /* Adjust margin */
+    padding: 2.5rem 0; /* Adjust padding */
+  }
+
+  .legacy-section h3 {
+    font-size: clamp(2rem, 6.5vw, 2.5rem); /* Fluid legacy title font */
+    margin-bottom: 2rem;
+  }
+
+  .legacy-stats {
+    flex-direction: column; /* Stack legacy items */
+    gap: 1.5rem;
+  }
+
+  .legacy-item {
+    min-width: unset; /* Remove fixed min-width */
+    width: 100%; /* Take full width */
+    padding: 1.5rem; /* Adjust padding */
+  }
+
+  .legacy-item h4 {
+    font-size: clamp(2.5rem, 7vw, 2.8rem); /* Fluid legacy number font */
+  }
+
+  .legacy-item p {
+    font-size: clamp(1rem, 3.5vw, 1.1rem); /* Fluid legacy label font */
+  }
+}
+
+/* Styles for screens up to 480px (most mobile phones) */
+@media (max-width: 480px) {
+  .events-section {
+    padding: 4rem 0; /* Smaller overall padding */
+  }
+
+  .container {
+    padding: 0 0.8rem; /* Even smaller horizontal padding */
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.2rem); /* Further reduce font size */
+    margin-bottom: 2rem; /* Further reduce margin */
+    letter-spacing: 1px; /* Reduce letter spacing */
+  }
+
+  .events-main-container {
+    padding: 1rem; /* Even smaller container padding */
+    gap: 1.5rem;
   }
 
   .timeline-item {
-    min-width: 240px;
+    min-width: 240px; /* Adjust min-width for very small screens */
+    padding: 0.8rem 1rem; /* Adjust item padding */
+  }
+
+  .timeline-year {
+    font-size: clamp(1.4rem, 4vw, 1.6rem); /* Smaller year font */
+  }
+
+  .timeline-venue {
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem); /* Smaller venue font */
+  }
+
+  .event-details-content {
+    padding: 1rem; /* Even smaller event details padding */
+  }
+
+  .event-header {
+    gap: 0.8rem; /* Smaller gap in header */
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .event-year-highlight {
+    font-size: clamp(2.2rem, 6vw, 2.5rem); /* Smaller highlight year */
+  }
+
+  .event-title {
+    font-size: clamp(1.6rem, 4.5vw, 1.8rem); /* Smaller event title */
+  }
+
+  .event-location {
+    font-size: clamp(0.9rem, 3vw, 1rem); /* Smaller location font */
+  }
+
+  .event-highlights h4,
+  .awardees-section h4,
+  .chief-guests-section h4,
+  .academic-guests-section h4,
+  .event-stats-section h4,
+  .legacy-section h3 {
+    font-size: clamp(1.3rem, 4vw, 1.5rem); /* Smaller section headers */
+    margin-bottom: 0.8rem;
+    padding-left: 0.6rem;
+  }
+
+  .event-highlights li {
+    font-size: clamp(0.85rem, 2.8vw, 0.95rem); /* Smaller list item font */
+    padding-left: 1.5rem; /* Adjust star icon spacing */
+  }
+
+  .awardees-grid,
+  .guests-grid {
+    gap: 1rem; /* Smaller gap */
+  }
+
+  .awardee-photo,
+  .guest-photo {
+    width: 80px; /* Even smaller photos */
+    height: 80px;
+  }
+
+  .guest-photo::before,
+  .awardee-photo::before {
+    font-size: 2.8rem; /* Adjust icon size */
+  }
+
+  .awardee-name,
+  .guest-name {
+    font-size: clamp(1rem, 3.2vw, 1.1rem); /* Smaller name font */
+  }
+
+  .awardee-company,
+  .awardee-position,
+  .guest-designation {
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem); /* Smaller designation font */
+  }
+
+  .event-stats {
+    grid-template-columns: 1fr; /* Stack stats on smallest screens for readability */
+    gap: 0.8rem;
+  }
+
+  .stat-item {
+    padding: 0.8rem 0.5rem; /* Even smaller padding */
+  }
+
+  .stat-number {
+    font-size: clamp(1.8rem, 5vw, 2rem); /* Smaller stat numbers */
+  }
+
+  .stat-label {
+    font-size: clamp(0.85rem, 3vw, 0.9rem); /* Smaller stat labels */
+  }
+
+  .legacy-section {
+    margin-top: 3rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .legacy-section h3 {
+    font-size: clamp(1.8rem, 5.5vw, 2.2rem); /* Smaller legacy title */
+    margin-bottom: 1.5rem;
+  }
+
+  .legacy-stats {
+    gap: 1rem;
+  }
+
+  .legacy-item {
+    padding: 1.2rem; /* Smaller padding */
+  }
+
+  .legacy-item h4 {
+    font-size: clamp(2.2rem, 6vw, 2.5rem); /* Smaller legacy numbers */
+  }
+
+  .legacy-item p {
+    font-size: clamp(0.85rem, 3vw, 1rem); /* Smaller legacy labels */
   }
 }
