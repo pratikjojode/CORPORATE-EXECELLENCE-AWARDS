@@ -1,17 +1,45 @@
-/* Insights.css - Scoped Styles Only Through Parent Classes */
+/* Insights.css - Mobile-First Scoped Styles Only Through Parent Classes */
+
+/* --- GLOBAL HEADER FIX (REQUIRED FOR YOUR SITE'S MAIN HEADER) --- */
+/*
+  IMPORTANT: This CSS block for `.site-header` should ideally be in your
+  main/global CSS file, not necessarily in insights.css.
+  You MUST adjust the `height` and potentially `background-color`
+  and other styles to match your actual site's header.
+  The `z-index` is critical for it to stay on top.
+*/
+.site-header {
+  /* Replace .site-header with your actual main header's class/ID */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Assuming a dark theme for consistency with your insights page */
+  background-color: #0d0d0d;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  z-index: 1000; /* Ensures the header stays on top of all content */
+  height: 70px; /* <--- CRITICAL: ADJUST THIS TO YOUR ACTUAL HEADER'S HEIGHT */
+  display: flex; /* Example: to center content, etc. */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
 
 /* ========== Base Container Styles ========== */
 .insights-page {
-  margin: 30px auto;
-  padding: 2rem 1.5rem;
-  line-height: 1.7;
+  padding: 1rem 0.8rem;
+  line-height: 1.6; /* Slightly tighter line-height for small screens */
   color: #ddd; /* Lighter text for dark background */
   background-color: #111111; /* Dark background */
   overflow-x: hidden;
-  margin-top: 40px;
-  font-family: "Open Sans", sans-serif; /* A more modern, elegant font */
-  opacity: 0; /* Hidden initially for full page fade-in */
+  /* --- FIX: Adjust margin-top to clear the fixed header --- */
+  margin-top: 70px; /* Should be AT LEAST the height of your fixed header */
+  /* --- END FIX --- */
+  font-family: "Open Sans", sans-serif;
+  opacity: 0;
   animation: insightsPageFadeIn 0.8s forwards ease-out;
+  box-sizing: border-box; /* Crucial for responsive layouts */
 }
 
 @keyframes insightsPageFadeIn {
@@ -20,49 +48,57 @@
   }
 }
 
-/* ========== Header Styles ========== */
+/* ========== Header Styles (for the .insights-header within the .insights-page) ========== */
 .insights-header {
   text-align: center;
-  margin: 2rem 0 4rem;
+  /* Default margins for small screens */
+  margin: 1.5rem 0 3rem;
+  position: relative; /* Ensure z-index works if needed for its children */
+  z-index: 10; /* A lower z-index than the main site header */
 }
 
 .insights-header .page-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700; /* Bolder for impact */
+  font-size: clamp(2rem, 8vw, 4rem); /* Fluid typography, starting smaller */
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: -1px;
-  color: #ffd700; /* Golden color */
+  color: #ffd700;
   margin-bottom: 0.8rem;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Subtle glow */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4); /* Subtle glow */
 }
 
 .insights-header .page-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  color: #b0b0b0; /* Slightly lighter gray */
+  font-size: clamp(
+    0.9rem,
+    3vw,
+    1.5rem
+  ); /* Fluid typography, starting smaller */
+  color: #b0b0b0;
   max-width: 800px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem; /* Reduced margin */
   font-weight: 300;
+  padding: 0 10px; /* Some padding for very small screens */
 }
 
 .insights-header .header-decoration {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 3rem;
+  gap: 1rem; /* Reduced gap */
+  margin-top: 2rem; /* Reduced margin */
 }
 
 .insights-header .golden-line {
-  width: 80px;
+  width: 60px; /* Smaller line */
   height: 2px;
   background: linear-gradient(to right, transparent, #ffd700, transparent);
   border-radius: 2px;
 }
 
 .insights-header .golden-star {
-  font-size: 2rem;
+  font-size: 1.5rem; /* Smaller star */
   color: #ffd700;
-  animation: insights-pulse 2s infinite alternate; /* Pulsing effect */
+  animation: insights-pulse 2s infinite alternate;
 }
 
 @keyframes insights-pulse {
@@ -79,24 +115,26 @@
 /* ========== Mosaic Grid System ========== */
 .insights-page .mosaic-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(200px, auto);
-  gap: 2rem; /* Increased gap for more breathing room */
+  /* Default to single column for small screens (mobile-first) */
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(180px, auto); /* Smaller min-height for rows */
+  gap: 1.5rem; /* Default gap for small screens */
   grid-auto-flow: dense;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem; /* Reduced margin */
 }
 
 /* Grid Item Base Styles */
 .insights-page .grid-item {
   position: relative;
-  border-radius: 18px; /* Slightly more rounded corners */
+  border-radius: 14px; /* Slightly less rounded for tighter fit */
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Deeper, more noticeable shadow */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Lighter shadow */
   transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-  background-color: #1a1a1a; /* Darker background for individual blocks */
-  opacity: 0; /* Hidden by default for scroll animation */
-  transform: translateY(40px); /* Starts below its final position */
-  border: 1px solid rgba(255, 215, 0, 0.1); /* Subtle golden border */
+  background-color: #1a1a1a;
+  opacity: 0;
+  transform: translateY(30px); /* Starts closer to final position */
+  border: 1px solid rgba(255, 215, 0, 0.08); /* More subtle golden border */
+  box-sizing: border-box; /* Ensure padding/border don't affect size */
 }
 
 /* Scroll Reveal Animation */
@@ -105,47 +143,35 @@
   transform: translateY(0);
 }
 
-/* Grid Item Layouts */
-.insights-page .featured-event {
-  grid-column: span 8;
-  grid-row: span 2;
-  min-height: 550px;
+/* Grid Item Layouts - Defaults to single column for mobile */
+.insights-page .featured-event,
+.insights-page .stats-block,
+.insights-page .gallery-block,
+.insights-page .panel-discussions-block,
+.insights-page .upcoming-events,
+.insights-page .photo-collage {
+  grid-column: span 1; /* All items are full width by default */
+  grid-row: auto; /* Allow height to adjust naturally */
+  padding: 1.5rem; /* Default padding for all blocks */
+  min-height: initial; /* Ensure no fixed min-height from larger screens */
 }
 
+.insights-page .featured-event {
+  min-height: 300px; /* Specific minimum height for featured event on small screens */
+}
+
+/* Specific background colors for variety */
 .insights-page .stats-block {
-  grid-column: span 4;
-  grid-row: span 1;
-  padding: 2.5rem;
-  background-color: #222222; /* Different shade of dark */
+  background-color: #222222;
   color: #ffd700;
 }
 
-.insights-page .gallery-block {
-  grid-column: span 4;
-  grid-row: span 1;
-  padding: 2.5rem;
-}
-
-/* New: Panel Discussions Block */
 .insights-page .panel-discussions-block {
-  grid-column: span 8; /* Takes up more space, similar to featured event */
-  grid-row: span 2;
-  padding: 2.5rem;
-  background-color: #0f0f0f; /* Even darker for contrast */
+  background-color: #0f0f0f;
 }
 
 .insights-page .upcoming-events {
-  grid-column: span 4;
-  grid-row: span 1;
-  padding: 2.5rem;
   background-color: #222222;
-}
-
-.insights-page .photo-collage {
-  grid-column: span 12;
-  grid-row: span 2;
-  padding: 2.5rem;
-  background-color: #111111; /* Consistent dark background */
 }
 
 /* ========== Grid Item Components ========== */
@@ -153,29 +179,35 @@
 .insights-page .section-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.8rem;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2); /* Golden separator */
-  padding-bottom: 0.8rem;
+  gap: 0.8rem; /* Reduced gap */
+  margin-bottom: 1.2rem; /* Reduced margin */
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15); /* More subtle separator */
+  padding-bottom: 0.6rem;
 }
 
 .insights-page .section-header h3 {
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 4vw, 1.6rem); /* Fluid font for small headers */
   font-weight: 600;
   color: #ffd700;
   text-transform: uppercase;
+  line-height: 1.3; /* Ensure readability */
 }
 
 .insights-page .section-header i {
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 4.5vw, 1.8rem); /* Fluid icon size */
   color: #ffd700;
 }
 
 .insights-page .section-subtitle {
-  font-size: 1rem;
-  margin-top: 0.5rem;
+  font-size: clamp(
+    0.85rem,
+    2.8vw,
+    1rem
+  ); /* Fluid font for subtitles, slightly larger minimum */
+  margin-top: 0.3rem;
   color: #b0b0b0;
   font-weight: 300;
+  line-height: 1.4; /* Ensure readability */
 }
 
 /* Featured Event */
@@ -183,7 +215,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.7) contrast(1.1); /* Darker and more contrast */
+  filter: brightness(0.65) contrast(1.1); /* Slightly darker */
 }
 
 .insights-page .featured-event .event-overlay {
@@ -191,31 +223,45 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.95)
+  ); /* Stronger gradient */
   color: white;
-  padding: 2.5rem;
+  padding: 1.5rem; /* Smaller default padding */
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .insights-page .featured-event h2 {
-  font-size: 2.5rem;
+  font-size: clamp(
+    1.6rem,
+    6vw,
+    2.5rem
+  ); /* Fluid font for featured event title */
   font-weight: 700;
   color: #ffd700;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .insights-page .featured-event .event-meta {
   display: flex;
-  gap: 2rem;
-  margin: 1.2rem 0;
-  font-size: 1rem;
+  flex-direction: column; /* Stack meta items by default */
+  gap: 0.5rem; /* Reduced gap */
+  margin: 1rem 0;
+  font-size: clamp(
+    0.85rem,
+    2.8vw,
+    1rem
+  ); /* Fluid font for meta, slightly larger minimum */
   color: #b0b0b0;
 }
 
 .insights-page .featured-event .meta-item {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
   opacity: 0.9;
 }
 
@@ -224,80 +270,96 @@
 }
 
 .insights-page .featured-event .event-description {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   max-width: 700px;
   color: #e0e0e0;
+  font-size: clamp(
+    0.9rem,
+    2.8vw,
+    1rem
+  ); /* Fluid font for description, slightly larger minimum */
+  line-height: 1.5;
 }
 
 /* Stats Block */
 .insights-page .stats-block .stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.5rem;
+  grid-template-columns: 1fr; /* Default to single column for stats */
+  gap: 1.5rem; /* Reduced gap */
+  margin-top: 1rem;
 }
 
 .insights-page .stats-block .stat-item {
   text-align: center;
-  padding: 1.5rem;
-  background: #1a1a1a; /* Darker than parent */
-  border-radius: 14px;
-  border: 1px solid rgba(255, 215, 0, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 1.2rem; /* Reduced padding */
+  background: #1a1a1a;
+  border-radius: 10px; /* Slightly less rounded */
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 .insights-page .stats-block .stat-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+  transform: translateY(-3px); /* Less pronounced lift */
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.15);
 }
 
 .insights-page .stats-block .stat-value {
   display: block;
-  font-size: 2.8rem;
+  font-size: clamp(2.2rem, 8vw, 2.8rem); /* Fluid font for stat values */
   font-weight: 300;
   color: #ffd700;
   line-height: 1;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
 }
 
 .insights-page .stats-block .stat-label {
-  font-size: 0.95rem;
+  font-size: clamp(
+    0.8rem,
+    2.8vw,
+    0.95rem
+  ); /* Fluid font for stat labels, slightly larger minimum */
   color: #b0b0b0;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.5px;
+  line-height: 1.3;
 }
 
 .insights-page .stats-block .stats-footer {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: clamp(
+    0.85rem,
+    2.8vw,
+    0.95rem
+  ); /* Fluid font for footer, slightly larger minimum */
   color: #b0b0b0;
 }
 
 /* Gallery Block */
 .insights-page .gallery-block .image-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin: 1.8rem 0;
+  grid-template-columns: 1fr; /* Default to single column for gallery images */
+  gap: 1rem; /* Reduced gap */
+  margin: 1.5rem 0;
 }
 
 .insights-page .gallery-block .image-container {
   position: relative;
   aspect-ratio: 1/1;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .insights-page .gallery-block .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.9);
+  filter: brightness(0.85); /* Slightly darker */
   transition: all 0.5s ease-in-out;
 }
 
@@ -307,7 +369,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 215, 0, 0.3); /* Golden transparent overlay */
+  background: rgba(255, 215, 0, 0.35); /* Slightly more opaque */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -317,12 +379,12 @@
 
 .insights-page .gallery-block .image-hover i {
   color: white;
-  font-size: 2rem;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 1.8rem; /* Smaller icon */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .insights-page .gallery-block .image-container:hover img {
-  transform: scale(1.08);
+  transform: scale(1.05); /* Less aggressive scale */
   filter: brightness(1);
 }
 
@@ -332,31 +394,33 @@
 
 /* New: Panel Discussions Block */
 .insights-page .panel-discussions-block .panels-container {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* Spacing between panel items */
+  gap: 1.5rem; /* Reduced spacing */
 }
 
 .insights-page .panel-discussions-block .panel-item {
   display: flex;
-  background-color: #1a1a1a; /* Inner dark background */
-  border-radius: 14px;
+  flex-direction: column; /* Stack image and content by default */
+  background-color: #1a1a1a;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 215, 0, 0.15); /* Subtle golden border */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 .insights-page .panel-discussions-block .panel-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .insights-page .panel-discussions-block .panel-image-wrapper {
   flex-shrink: 0;
-  width: 30%; /* Image takes up 30% of the width */
-  aspect-ratio: 16/9;
+  width: 100%; /* Full width image by default */
+  height: 150px; /* Fixed height for image on small screens */
   overflow: hidden;
 }
 
@@ -368,26 +432,38 @@
 }
 
 .insights-page .panel-discussions-block .panel-content {
-  padding: 1.8rem;
+  padding: 1.2rem; /* Reduced padding */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .insights-page .panel-discussions-block .panel-content h4 {
-  font-size: 1.5rem;
+  font-size: clamp(
+    1.2rem,
+    4.5vw,
+    1.5rem
+  ); /* Fluid font for panel title, slightly larger minimum */
   color: #ffd700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
 }
 
 .insights-page .panel-discussions-block .panel-meta {
-  font-size: 0.9rem;
+  font-size: clamp(
+    0.8rem,
+    2.8vw,
+    0.9rem
+  ); /* Fluid font for meta, slightly larger minimum */
   color: #b0b0b0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
+  line-height: 1.4;
 }
 
 .insights-page .panel-discussions-block .panel-meta i {
@@ -395,44 +471,49 @@
 }
 
 .insights-page .panel-discussions-block .panel-description {
-  font-size: 1rem;
+  font-size: clamp(
+    0.85rem,
+    2.8vw,
+    1rem
+  ); /* Fluid font for description, slightly larger minimum */
   color: #e0e0e0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
 }
 
 .insights-page .panel-discussions-block .panel-view-button {
-  align-self: flex-start; /* Align button to the start */
+  align-self: flex-start;
   background: #ffd700;
   color: #111111;
   border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem; /* Reduced padding */
+  border-radius: 20px; /* Slightly less rounded */
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem); /* Fluid font size */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .insights-page .panel-discussions-block .panel-view-button:hover {
   background: #ffc107;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
 }
 
 /* Upcoming Events Block */
 .insights-page .upcoming-events .event-card {
-  background: #1a1a1a; /* Consistent dark background */
-  padding: 2rem;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  background: #1a1a1a;
+  padding: 1.5rem; /* Reduced padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* New: Shine Animation for upcoming events card */
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .insights-page .upcoming-events .event-card::before {
@@ -444,8 +525,8 @@
   height: 200%;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
+    rgba(255, 255, 255, 0.08) 0%,
+    /* Less intense shine */ transparent 70%
   );
   transform: rotate(45deg);
   animation: shine-animation 4s infinite linear;
@@ -458,7 +539,7 @@
     opacity: 0;
   }
   20% {
-    opacity: 0.5;
+    opacity: 0.4; /* Less intense opacity */
   }
   40% {
     transform: rotate(45deg) translate(100%, 100%);
@@ -470,33 +551,38 @@
 }
 
 .insights-page .upcoming-events .event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .insights-page .upcoming-events .card-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   position: relative;
-  border-bottom: 1px dashed rgba(255, 215, 0, 0.2); /* Dashed golden separator */
-  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(255, 215, 0, 0.15);
+  padding-bottom: 0.8rem;
 }
 
 .insights-page .upcoming-events .card-header h4 {
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 4.5vw, 1.8rem); /* Fluid font for card title */
   color: #ffd700;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .insights-page .upcoming-events .event-details {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .insights-page .upcoming-events .event-date {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: clamp(
+    0.9rem,
+    2.8vw,
+    1rem
+  ); /* Fluid font for event date, slightly larger minimum */
   color: #e0e0e0;
 }
 
@@ -506,36 +592,37 @@
 
 .insights-page .upcoming-events .event-description {
   color: #b0b0b0;
+  font-size: clamp(
+    0.85rem,
+    2.8vw,
+    0.95rem
+  ); /* Fluid font for description, slightly larger minimum */
+  line-height: 1.5;
 }
 
 /* Photo Collage Block */
-.insights-page .photo-collage {
-  /* ... existing styles ... */
-}
-
 .insights-page .photo-collage .collage-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(180px, 1fr)
-  ); /* Larger collage items */
-  grid-auto-rows: 180px;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  /* Default to 2 columns for small screens, adapting to 3 on slightly larger mobiles */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-auto-rows: 100px; /* Smaller default row height */
+  gap: 0.8rem; /* Reduced gap */
+  margin: 1.5rem 0;
 }
 
 .insights-page .photo-collage .collage-item {
   position: relative;
-  border-radius: 10px;
+  border-radius: 8px; /* Less rounded */
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 .insights-page .photo-collage .collage-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(40%) brightness(0.8) contrast(1.1); /* More subdued for collage */
+  filter: grayscale(50%) brightness(0.75) contrast(1.1); /* More subdued */
   transition: all 0.5s ease-in-out;
 }
 
@@ -545,21 +632,28 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 215, 0, 0.4); /* Golden transparent overlay */
+  background: rgba(255, 215, 0, 0.45); /* Slightly more opaque */
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: all 0.5s ease-in-out;
-  color: #111111; /* Dark text on golden overlay */
+  color: #111111;
   font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer; /* Indicate it's clickable */
+  font-size: clamp(
+    0.8rem,
+    3.5vw,
+    1.1rem
+  ); /* Fluid font for overlay text, slightly larger minimum */
+  cursor: pointer;
+  text-align: center; /* Center text if it wraps */
+  padding: 0.5rem; /* Small padding for overlay text */
+  box-sizing: border-box;
 }
 
 .insights-page .photo-collage .collage-item:hover .collage-image {
   filter: grayscale(0%) brightness(1) contrast(1);
-  transform: scale(1.05);
+  transform: scale(1.03); /* Less aggressive scale */
 }
 
 .insights-page .photo-collage .collage-item:hover .collage-overlay {
@@ -568,26 +662,31 @@
 
 .insights-page .photo-collage .collage-footer {
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
+  margin-top: 1.2rem;
+  font-size: clamp(
+    0.8rem,
+    2.8vw,
+    0.95rem
+  ); /* Fluid font for footer, slightly larger minimum */
   color: #b0b0b0;
+  line-height: 1.4;
 }
 
 /* New: Animations for photo collage text */
 @keyframes text-glow {
   0%,
   100% {
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+    text-shadow: 0 0 4px rgba(255, 215, 0, 0.15); /* Softer glow */
   }
   50% {
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
   }
 }
 
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px); /* Shorter movement */
   }
   to {
     opacity: 1;
@@ -600,69 +699,72 @@
 }
 
 .insights-page .photo-collage .section-subtitle-animation {
-  animation: fade-in-up 1s ease-out forwards;
+  animation: fade-in-up 0.9s ease-out forwards;
 }
 
 .insights-page .photo-collage .collage-footer-animation {
-  animation: fade-in-up 1s ease-out forwards 0.3s; /* Delay for staggered effect */
+  animation: fade-in-up 0.9s ease-out forwards 0.2s; /* Slightly less delay */
 }
 
 /* ========== Buttons ========== */
 .insights-page .cta-button,
-.insights-page .view-more, /* Keeping .view-more in case it's reused, but styling it for removal */
+.insights-page .view-more,
 .insights-page .register-button,
 .insights-page .panel-view-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background-color: #ffd700; /* Golden background */
-  color: #111111; /* Dark text */
+  gap: 0.5rem; /* Reduced gap */
+  background-color: #ffd700;
+  color: #111111;
   border: none;
-  padding: 0.9rem 2rem;
-  border-radius: 35px;
+  padding: 0.7rem 1.5rem; /* Default small padding */
+  border-radius: 30px; /* Slightly less rounded */
   cursor: pointer;
-  font-size: 1rem;
+  font-size: clamp(
+    0.85rem,
+    2.8vw,
+    1rem
+  ); /* Fluid font size for buttons, slightly larger minimum */
   font-weight: 600;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out; /* Faster transition */
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-decoration: none; /* For links */
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .insights-page .cta-button:hover,
 .insights-page .view-more:hover,
 .insights-page .register-button:hover,
 .insights-page .panel-view-button:hover {
-  background-color: #ffc107; /* Slightly darker gold on hover */
-  transform: translateY(-5px); /* More pronounced lift */
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  background-color: #ffc107;
+  transform: translateY(-3px); /* Less pronounced lift */
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3);
 }
 
 .insights-page .view-more {
-  /* Style for buttons that are removed, in case re-introduced */
-  display: none; /* Hide the button */
+  display: none;
 }
 
 .insights-page .register-button {
-  background: #333333; /* Dark button for register */
+  background: #333333;
   color: #ffd700;
   border: 1px solid #ffd700;
-  /* New: Pulse Shadow Animation for register button */
   animation: pulse-shadow 2s infinite alternate;
 }
 
 @keyframes pulse-shadow {
   0% {
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.15); /* Softer shadow */
   }
   100% {
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   }
 }
 
 .insights-page .register-button:hover {
   background: #444444;
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.15);
 }
 
 /* ========== Slideshow Modal Styles ========== */
@@ -672,7 +774,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85); /* Darker overlay */
+  background: rgba(0, 0, 0, 0.9); /* More opaque for mobile */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -689,18 +791,19 @@
 
 .slideshow-modal-content {
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  background: #1a1a1a; /* Dark background for modal */
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  padding: 20px;
+  max-width: 95vw; /* Wider for small screens */
+  max-height: 95vh; /* Taller for small screens */
+  background: #1a1a1a;
+  border-radius: 14px; /* Slightly less rounded */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  padding: 15px; /* Default small padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: scale(0.9);
+  transform: scale(0.95); /* Starts closer to final size */
   animation: scaleIn 0.3s forwards;
+  box-sizing: border-box;
 }
 
 @keyframes scaleIn {
@@ -711,15 +814,15 @@
 
 .slideshow-close-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px; /* Closer to edge */
+  right: 10px; /* Closer to edge */
   background: #ffd700;
   color: #111111;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.8rem;
+  width: 35px; /* Smaller button */
+  height: 35px;
+  font-size: 1.5rem; /* Smaller icon */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -740,27 +843,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Ensure image doesn't overflow */
+  overflow: hidden;
 }
 
 .slideshow-image {
   max-width: 100%;
-  max-height: 80vh; /* Limit height to prevent overflow on smaller screens */
-  object-fit: contain; /* Ensure image fits within bounds */
-  border-radius: 10px;
-  transition: opacity 0.5s ease-in-out; /* Smooth transition between images */
+  max-height: 85vh; /* Max height for image within modal */
+  object-fit: contain;
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .slideshow-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 215, 0, 0.7); /* Semi-transparent golden background */
+  background: rgba(255, 215, 0, 0.8); /* More opaque */
   color: #111111;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 12px; /* Smaller padding */
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.8rem; /* Smaller icon */
   border-radius: 5px;
   transition: background 0.3s ease;
 }
@@ -770,27 +873,80 @@
 }
 
 .slideshow-nav.prev {
-  left: 20px;
+  left: 10px; /* Closer to edge */
 }
 
 .slideshow-nav.next {
-  right: 20px;
+  right: 10px; /* Closer to edge */
 }
 
 .slide-counter {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px; /* Closer to bottom */
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7); /* More opaque */
   color: #ffd700;
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 0.9rem;
+  padding: 4px 12px; /* Smaller padding */
+  border-radius: 12px;
+  font-size: 0.8rem; /* Smaller font */
 }
 
-/* ========== Responsive Design ========== */
-@media (max-width: 1200px) {
+/* ========== Responsive Design - Media Queries (Enhancements for larger screens) ========== */
+
+/* Small Tablets (e.g., Kindle Fire, older iPads in portrait) and larger phones in landscape */
+@media (min-width: 481px) and (max-width: 767px) {
+  .insights-page {
+    padding: 1.5rem 1rem;
+    /* --- FIX: Adjust margin-top for larger phones/small tablets --- */
+    margin-top: 80px; /* Example: if header is 70px, this provides 10px extra space */
+    /* --- END FIX --- */
+  }
+
+  .insights-page .mosaic-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(250px, 1fr)
+    ); /* Allow 2 columns if space permits */
+    gap: 1.8rem;
+  }
+
+  .insights-page .featured-event {
+    min-height: 380px;
+  }
+
+  .insights-page .gallery-block .image-grid {
+    grid-template-columns: 1fr 1fr; /* Maintain 2 columns for gallery */
+    gap: 1.2rem;
+  }
+
+  .insights-page .photo-collage .collage-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-auto-rows: 120px;
+    gap: 1rem;
+  }
+}
+
+/* Medium Tablets (e.g., iPad, larger Android tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .insights-page {
+    padding: 2rem 1.2rem;
+    /* --- FIX: Adjust margin-top for tablets --- */
+    margin-top: 90px; /* Example: if header is 70-80px, this provides sufficient space */
+    /* --- END FIX --- */
+  }
+  .insights-header {
+    margin: 50px auto 3rem; /* Add auto for horizontal centering if max-width is applied */
+  }
+  .insights-page .mosaic-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    ); /* Adjust for more columns */
+    gap: 2rem;
+  }
+
+  /* Specific layouts for these breakpoints */
   .insights-page .featured-event {
     grid-column: span 12;
     grid-row: span 1;
@@ -800,113 +956,191 @@
   .insights-page .stats-block,
   .insights-page .gallery-block,
   .insights-page .upcoming-events {
-    grid-column: span 6;
+    grid-column: span 6; /* Two columns */
   }
 
   .insights-page .panel-discussions-block {
-    grid-column: span 12; /* Full width on smaller screens */
+    grid-column: span 12;
     grid-row: auto;
   }
 
   .insights-page .panel-discussions-block .panel-item {
-    flex-direction: column; /* Stack image and content */
+    flex-direction: row; /* Horizontal layout for panel items */
   }
 
   .insights-page .panel-discussions-block .panel-image-wrapper {
-    width: 100%; /* Image takes full width */
-    height: 200px; /* Fixed height for image */
-  }
-}
-
-@media (max-width: 768px) {
-  .insights-page .mosaic-grid {
-    grid-template-columns: 1fr;
+    width: 35%; /* Image takes a portion of width */
+    height: auto; /* Auto height based on content */
+    aspect-ratio: 16/9; /* Keep aspect ratio */
   }
 
-  .insights-page .featured-event,
-  .insights-page .stats-block,
-  .insights-page .gallery-block,
-  .insights-page .panel-discussions-block, /* Adjusted for stacking */
-  .insights-page .upcoming-events,
-  .insights-page .photo-collage {
-    grid-column: span 1;
-  }
-
-  .insights-page .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .insights-page .featured-event .event-overlay {
-    padding: 2rem;
-  }
-
-  .insights-page .collage-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .insights-page {
-    padding: 1.5rem 1rem;
-  }
-
-  .insights-page .collage-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .insights-page .image-grid {
-    gap: 0.8rem;
-  }
-
-  .insights-page .featured-event .event-meta {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .insights-header .page-title {
-    font-size: 2.5rem;
-  }
-
-  .insights-header .page-subtitle {
-    font-size: 1rem;
-  }
-
-  .slideshow-modal-content {
-    padding: 10px;
-  }
-
-  .slideshow-nav {
-    padding: 5px 10px;
-    font-size: 1.5rem;
-  }
-  .slideshow-nav.prev {
-    left: 10px;
-  }
-  .slideshow-nav.next {
-    right: 10px;
+  .insights-page .photo-collage .collage-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: 150px;
   }
 
   .slideshow-close-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 1.2rem;
-    top: 5px;
-    right: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.8rem;
+    top: 15px;
+    right: 15px;
+  }
+  .slideshow-nav {
+    padding: 10px 15px;
+    font-size: 2rem;
+  }
+  .slideshow-nav.prev {
+    left: 20px;
+  }
+  .slideshow-nav.next {
+    right: 20px;
+  }
+  .slide-counter {
+    bottom: 20px;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+  }
+}
+
+/* Desktops and Laptops (min-width 1025px) */
+@media (min-width: 1025px) {
+  .insights-page {
+    padding: 2rem 1.5rem;
+    /* --- FIX: Adjust margin-top for desktops --- */
+    margin-top: 100px; /* Example: if header is 70-90px, this provides sufficient space */
+    /* --- END FIX --- */
+  }
+
+  .insights-header {
+    margin: 2rem auto 4rem; /* Add auto for horizontal centering if max-width is applied */
+  }
+
+  .insights-header .page-title {
+    font-size: 4rem; /* Specific size for large screens */
+  }
+
+  .insights-header .page-subtitle {
+    font-size: 1.5rem; /* Specific size for large screens */
+    margin: 0 auto 2rem;
+  }
+
+  .insights-header .golden-line {
+    width: 80px;
+  }
+
+  .insights-header .golden-star {
+    font-size: 2rem;
+  }
+
+  .insights-page .mosaic-grid {
+    grid-template-columns: repeat(12, 1fr); /* Original 12-column grid */
+    grid-auto-rows: minmax(200px, auto);
+    gap: 2rem;
+  }
+
+  /* Restore original larger-screen grid item layouts */
+  .insights-page .featured-event {
+    grid-column: span 8;
+    grid-row: span 2;
+    min-height: 550px;
+  }
+
+  .insights-page .stats-block {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+
+  .insights-page .gallery-block {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+
+  .insights-page .panel-discussions-block {
+    grid-column: span 8;
+    grid-row: span 2;
+  }
+
+  .insights-page .panel-discussions-block .panel-item {
+    flex-direction: row; /* Horizontal layout for panel items */
+  }
+
+  .insights-page .panel-discussions-block .panel-image-wrapper {
+    width: 30%; /* Original width */
+    height: auto;
+  }
+
+  .insights-page .upcoming-events {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+
+  .insights-page .photo-collage {
+    grid-column: span 12;
+    grid-row: span 2;
+  }
+
+  .insights-page .stats-block .stats-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns for stats */
+  }
+
+  .insights-page .gallery-block .image-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns for gallery */
+  }
+
+  .insights-page .photo-collage .collage-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(180px, 1fr)
+    ); /* Larger collage items */
+    grid-auto-rows: 180px;
+    gap: 1.5rem;
+  }
+
+  .insights-page .cta-button,
+  .insights-page .register-button,
+  .insights-page .panel-view-button {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-height: 500px) and (max-width: 800px) and (orientation: landscape) {
+  .insights-page {
+    padding: 1rem;
+    /* --- FIX: Adjust margin-top for landscape if header height changes --- */
+    margin-top: 60px; /* Example: if header is 50-60px in landscape */
+    /* --- END FIX --- */
+  }
+  .insights-page .mosaic-grid {
+    gap: 1rem;
+  }
+  .insights-page .featured-event {
+    min-height: 250px; /* Adjust height for landscape */
+  }
+  .insights-page .panel-discussions-block .panel-image-wrapper {
+    height: 120px; /* Smaller image height in landscape */
+  }
+  .slideshow-modal-content {
+    max-height: 90vh; /* Allow more vertical space for image */
+  }
+  .slideshow-image {
+    max-height: 70vh; /* Limit image height */
   }
 }
 
 /* ========== Icons (You'd typically use a library like Font Awesome) ========== */
-/* Using Unicode characters for simplicity. Replace with actual icons if you have a library. */
 .insights-page .icon-calendar::before {
-  content: "📅"; /* Calendar emoji */
+  content: "📅";
 }
 
 .insights-page .icon-location::before {
-  content: "📍"; /* Location emoji */
+  content: "📍";
 }
 
 .insights-page .icon-arrow::before {
-  content: "→"; /* Right arrow */
+  content: "→";
   display: inline-block;
   transform: translateX(0);
   transition: transform 0.3s ease-out;
@@ -920,25 +1154,25 @@
 }
 
 .insights-page .icon-stats::before {
-  content: "📊"; /* Bar chart emoji */
+  content: "📊";
 }
 
 .insights-page .icon-gallery::before {
-  content: "📸"; /* Camera emoji */
+  content: "📸";
 }
 
 .insights-page .icon-discussion::before {
-  content: "🗣️"; /* Speaking head emoji for discussions */
+  content: "🗣️";
 }
 
 .insights-page .icon-mic::before {
-  content: "🎤"; /* Microphone emoji for speakers */
+  content: "🎤";
 }
 
 .insights-page .icon-zoom::before {
-  content: "🔍"; /* Magnifying glass emoji */
+  content: "🔍";
 }
 
 .insights-page .icon-collage::before {
-  content: "🌟"; /* Sparkle emoji for a more premium feel */
+  content: "🌟";
 }
