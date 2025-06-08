@@ -1,0 +1,524 @@
+/* General Body and Container Styling */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.attendance-container {
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+/* Input and Dropdown Styling */
+.filter-input {
+  width: calc(100% - 20px);
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+.filter-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.filter-dropdowns {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.filter-dropdowns select {
+  flex: 1; /* Distribute space evenly */
+  padding: 12px 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1em;
+  background-color: #fff;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.7L147.2%20202.7%2018.3%2075.1a17.6%2017.6%200%200%200-25.3%200c-6.9%206.9-6.9%2018%200%2024.9l130.7%20129.9c3.9%203.9%209%206%2014.1%206s10.2-2.1%2014.1-6l130.7-129.9c6.9-6.9%206.9-17.9%200-24.9z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-dropdowns select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* View Toggle Buttons */
+.view-toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.view-toggle-buttons button {
+  padding: 10px 25px;
+  border: none;
+  background-color: transparent;
+  color: #495057;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  flex: 1; /* Distribute space evenly */
+}
+
+.view-toggle-buttons button.active {
+  background-color: #007bff;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.view-toggle-buttons button:hover:not(.active) {
+  background-color: #dee2e6;
+}
+
+/* Export Button */
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 10px; /* For spacing if multiple buttons */
+}
+
+button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.total-count {
+  text-align: right;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #555;
+  font-weight: 500;
+}
+
+.total-count strong {
+  color: #007bff;
+}
+
+/* Table View Styling */
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden; /* Ensures rounded corners are applied */
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.attendance-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.attendance-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.attendance-table tbody tr:hover {
+  background-color: #e2f0ff;
+  transition: background-color 0.2s ease;
+}
+
+.attendance-table td a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.attendance-table td a:hover {
+  text-decoration: underline;
+}
+
+.attendance-table button {
+  background-color: #6c757d;
+  padding: 6px 10px;
+  font-size: 0.85em;
+  border-radius: 5px;
+}
+
+.attendance-table button:hover {
+  background-color: #5a6268;
+}
+
+/* Grid View Styling */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.grid-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.grid-item h3 {
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+}
+
+.grid-item p {
+  margin: 8px 0;
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+.grid-item p strong {
+  color: #555;
+  min-width: 90px;
+  display: inline-block; /* Align keys and values nicely */
+}
+
+.grid-item a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.grid-item a:hover {
+  text-decoration: underline;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 8px;
+}
+
+.pagination-controls button {
+  background-color: #6c757d;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  min-width: 40px; /* Ensure buttons have a consistent width */
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+.pagination-controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.pagination-controls button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px; /* Add some padding for smaller screens */
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content h3 {
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.8em;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 15px;
+}
+
+.modal-content p {
+  margin: 12px 0;
+  font-size: 1.05em;
+  display: flex;
+  align-items: baseline;
+}
+
+.modal-content p strong {
+  color: #333;
+  min-width: 120px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.modal-content a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 5px; /* Spacing for links in modal */
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.modal-content button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 1.1em;
+  border-radius: 8px;
+}
+
+.modal-content button:first-of-type {
+  background-color: #28a745; /* WhatsApp share button */
+  margin-bottom: 10px;
+}
+
+.modal-content button:first-of-type:hover {
+  background-color: #218838;
+}
+
+.modal-content button:last-of-type {
+  background-color: #dc3545; /* Close button */
+}
+
+.modal-content button:last-of-type:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .attendance-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .filter-dropdowns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-dropdowns select {
+    width: 100%;
+  }
+
+  .view-toggle-buttons {
+    flex-direction: column;
+  }
+
+  .view-toggle-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .attendance-table {
+    display: block;
+    overflow-x: auto; /* Enable horizontal scrolling for tables */
+    white-space: nowrap; /* Prevent text wrapping in table cells */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  .attendance-table thead {
+    display: none; /* Hide header on small screens */
+  }
+
+  .attendance-table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .attendance-table td {
+    display: block;
+    text-align: right;
+    padding-left: 50%; /* Space for pseudo-element labels */
+    position: relative;
+    border-bottom: none;
+  }
+
+  .attendance-table td::before {
+    content: attr(data-label); /* Use data-label for content */
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+  }
+
+  /* Specific labels for table cells in responsive view */
+  .attendance-table tr td:nth-of-type(1):before {
+    content: "Timestamp:";
+  }
+  .attendance-table tr td:nth-of-type(2):before {
+    content: "Full Name:";
+  }
+  .attendance-table tr td:nth-of-type(3):before {
+    content: "Email ID:";
+  }
+  .attendance-table tr td:nth-of-type(4):before {
+    content: "Contact:";
+  }
+  .attendance-table tr td:nth-of-type(5):before {
+    content: "Designation:";
+  }
+  .attendance-table tr td:nth-of-type(6):before {
+    content: "Organisation:";
+  }
+  .attendance-table tr td:nth-of-type(7):before {
+    content: "LinkedIn:";
+  }
+  .attendance-table tr td:nth-of-type(8):before {
+    content: "Location:";
+  }
+  .attendance-table tr td:nth-of-type(9):before {
+    content: "View Detail:";
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .filter-input,
+  .filter-dropdowns select {
+    padding: 10px 12px;
+    font-size: 0.95em;
+  }
+
+  .view-toggle-buttons button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-size: 0.95em;
+  }
+
+  .modal-content {
+    padding: 25px;
+  }
+
+  .modal-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .modal-content p {
+    font-size: 0.95em;
+    flex-direction: column; /* Stack key-value pairs in modal */
+    align-items: flex-start;
+  }
+
+  .modal-content p strong {
+    margin-bottom: 3px;
+    min-width: unset; /* Remove min-width for stacking */
+  }
+
+  .modal-content button {
+    padding: 10px;
+    font-size: 1em;
+  }
+}

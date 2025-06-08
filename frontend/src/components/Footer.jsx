@@ -23,7 +23,7 @@ const Footer = () => {
           </p>
           <div className="social-icons">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/jobizza/"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
@@ -31,7 +31,7 @@ const Footer = () => {
               <FaFacebook className="icon" />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/jobizzaa/?hl=en"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
@@ -39,7 +39,7 @@ const Footer = () => {
               <FaInstagram className="icon" />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@gauravsharmajobizza2433"
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
@@ -55,7 +55,7 @@ const Footer = () => {
               <FaTwitter className="icon" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/jobizzatech/posts/?feedView=all"
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"

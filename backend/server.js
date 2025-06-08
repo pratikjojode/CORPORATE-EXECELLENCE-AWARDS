@@ -6,6 +6,7 @@ import cors from "cors";
 
 import adminRoutes from "./routes/adminRoutes.js";
 import formRoute from "./routes/formRoute.js";
+import attendanceRoute from "./routes/attendanceRoute.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/form", formRoute);
+app.use("/api/v1/attendance", attendanceRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
