@@ -1,0 +1,305 @@
+/* Import Premium Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+/* CSS Variables for Gold Theme */
+:root {
+  --gold: #ffd700;
+  --gold-dark: #b8860b;
+  --gold-light: #fff8dc;
+  --gold-accent: #daa520;
+  --black: #0a0a0a;
+  --black-light: #1a1a1a;
+  --white: #ffffff;
+  --gray: #f5f5f5;
+  --shadow-light: rgba(255, 215, 0, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --gradient-gold: linear-gradient(
+    135deg,
+    #ffd700 0%,
+    #ffa500 50%,
+    #ff8c00 100%
+  );
+  --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--white);
+  background: var(--gradient-dark);
+  overflow-x: hidden;
+}
+
+/* Executive Directory Container */
+.executive-directory {
+  min-height: 100vh;
+  padding: 2rem 0;
+  position: relative;
+}
+.executive-directory::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 215, 0, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(255, 215, 0, 0.03) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero Section */
+.hero-section-super {
+  text-align: center;
+  padding: 4rem 2rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+.main {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+.main::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+}
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  color: var(--gold-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Executives Grid */
+.executives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Executive Card */
+.executive-card {
+  height: 380px;
+  perspective: 1000px;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+.executive-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.executive-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.executive-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.executive-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.executive-card:nth-child(n + 5) {
+  animation-delay: 0.5s;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  cursor: pointer;
+}
+.card-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 24px;
+  z-index: -1;
+}
+.executive-card:hover .card-inner {
+  transform: translateY(-12px) rotateX(5deg);
+  box-shadow: 0 20px 40px var(--shadow-light), 0 10px 20px var(--shadow-dark);
+  border-color: var(--gold);
+}
+.executive-card:hover .card-inner::before {
+  opacity: 0.08;
+}
+
+/* Image Container */
+.image-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 8px 32px var(--shadow-light);
+  transition: all 0.4s ease;
+}
+.executive-card:hover .image-container {
+  transform: scale(1.1);
+  box-shadow: 0 12px 40px var(--shadow-light);
+}
+
+/* ✅ FIXED EXECUTIVE IMAGE */
+.executive-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* <-- Fix: make image circular */
+  background-color: var(
+    --black-light
+  ); /* optional: fill behind transparent images */
+  transition: transform 0.4s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.executive-card:hover .image-overlay {
+  opacity: 0.15;
+}
+
+/* Executive Info */
+.executive-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.executive-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+  transition: all 0.3s ease;
+}
+.executive-card:hover .executive-name {
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+.executive-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+.executive-card:hover .executive-title {
+  color: var(--gold-light);
+}
+.executive-company {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+.executive-card:hover .executive-company {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Card Shine */
+.card-shine {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+.executive-card:hover .card-shine {
+  opacity: 1;
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* Media Queries, Animations, and Others... */
+@media (max-width: 900px) {
+  .executive-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (max-width: 600px) {
+  .executive-image {
+    width: 90px;
+    height: 90px;
+  }
+}
+@media (max-width: 400px) {
+  .executive-image {
+    width: 80px;
+    height: 80px;
+  }
+}
