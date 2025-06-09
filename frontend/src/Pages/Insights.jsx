@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header"; // Assuming you have a Header component
-import Footer from "../components/Footer"; // Assuming you have a Footer component
-import "../styles/Insights.css";
+import Footer from "../Components/Footer"; // Assuming you have a Footer component
+import "../Styles/Insights.css";
 
 const Insights = () => {
   // State for the image slideshow modal
@@ -31,7 +31,8 @@ const Insights = () => {
       title: "HR MEET AND HR PANEL DISCUSSION",
       date: "March 10, 2024",
       speakers: "Dr. Parag Kalkar and Mr Ali Merchant",
-      description: "Emerging change and Tranformation in Technology ,People and Work.",
+      description:
+        "Emerging change and Tranformation in Technology ,People and Work.",
       image: "/images/event1.png",
       slideshowImages: [
         "/images/event2.png",
@@ -44,8 +45,10 @@ const Insights = () => {
       id: 2,
       title: "CORPORATE LEADERS SHOWCASING SPORTSMANSHIP",
       date: "September 29, 2023",
-      speakers: "Dr Amit Andre, Pankaj Ghode ,Sainath Hon ,Shripal Gandhi ,Sudhin Bharokar",
-      description: "Panel Discussion on Sustainable Practices in Corporate Culture",
+      speakers:
+        "Dr Amit Andre, Pankaj Ghode ,Sainath Hon ,Shripal Gandhi ,Sudhin Bharokar",
+      description:
+        "Panel Discussion on Sustainable Practices in Corporate Culture",
       image: "/images/event6.png",
       slideshowImages: [
         "/images/event7.png",
@@ -59,14 +62,14 @@ const Insights = () => {
       id: 3,
       title: "HR MEET AND GREET",
       date: "April 23, 2022",
-      speakers: "Mr Sangramsingh Pawar, Ms Trupti Patkar ,Dr Shital Watile ,Ms Daya Ogale ,Dr Amit Andre, Mr Milind Mutalik",
+      speakers:
+        "Mr Sangramsingh Pawar, Ms Trupti Patkar ,Dr Shital Watile ,Ms Daya Ogale ,Dr Amit Andre, Mr Milind Mutalik",
       description: "Future Of Work And Working Hybrid Model",
       image: "/images/event11.png",
       slideshowImages: [
         "/images/event12.png",
         "/images/event13.png",
         "/images/event14.png",
-
       ],
     },
   ];
@@ -107,21 +110,25 @@ const Insights = () => {
     setSlideshowImages(images);
     setCurrentSlide(0); // Start from the first slide
     setIsSlideshowOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
   };
 
   const closeSlideshow = () => {
     setIsSlideshowOpen(false);
     setSlideshowImages([]);
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = ""; // Restore scrolling
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slideshowImages.length - 1 ? 0 : prev + 1));
+    setCurrentSlide((prev) =>
+      prev === slideshowImages.length - 1 ? 0 : prev + 1
+    );
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slideshowImages.length - 1 : prev - 1));
+    setCurrentSlide((prev) =>
+      prev === 0 ? slideshowImages.length - 1 : prev - 1
+    );
   };
 
   // Auto-play for slideshow
@@ -129,30 +136,33 @@ const Insights = () => {
     let slideshowInterval;
     if (isSlideshowOpen && slideshowImages.length > 1) {
       slideshowInterval = setInterval(() => {
-        setCurrentSlide((prev) => (prev === slideshowImages.length - 1 ? 0 : prev + 1));
+        setCurrentSlide((prev) =>
+          prev === slideshowImages.length - 1 ? 0 : prev + 1
+        );
       }, 3000); // Change slide every 3 seconds
     }
     return () => clearInterval(slideshowInterval);
   }, [isSlideshowOpen, slideshowImages.length]);
-
 
   // Generic CTA handler for future use, if you decide to add more custom actions
   const handleCtaAction = (actionType) => {
     console.log(`Action: ${actionType} triggered.`);
     // In a real application, this might trigger a navigation, form, etc.
     if (actionType === "Pre-Register Now") {
-      window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSfGfmANTWGKhpEXYI7yNkt1jboJjGZF_NZmLhPAewJ7jXksGw/viewform'; // Redirect to Google Forms
+      window.location.href =
+        "https://docs.google.com/forms/d/e/1FAIpQLSfGfmANTWGKhpEXYI7yNkt1jboJjGZF_NZmLhPAewJ7jXksGw/viewform"; // Redirect to Google Forms
     }
   };
 
   return (
     <>
-    <Header/>
+      <Header />
       <div className="insights-page">
         <header className="insights-header">
           <h1 className="page-title">Event Insights & Impact</h1>
           <p className="page-subtitle">
-            Chronicles of Excellence: Pioneering Connections, Fostering Growth, Inspiring Futures
+            Chronicles of Excellence: Pioneering Connections, Fostering Growth,
+            Inspiring Futures
           </p>
           <div className="header-decoration">
             <div className="golden-line"></div>
@@ -245,25 +255,41 @@ const Insights = () => {
             <div className="image-grid">
               {/* Using a few generic images here as the "Explore Full Gallery" button is removed */}
               <div className="image-container">
-                <img src="/images/image2.png" alt="Event moment 1" loading="lazy" />
+                <img
+                  src="/images/image2.png"
+                  alt="Event moment 1"
+                  loading="lazy"
+                />
                 <div className="image-hover">
                   <i className="icon-zoom"></i>
                 </div>
               </div>
               <div className="image-container">
-                <img src="/images/collage8.png" alt="Event moment 2" loading="lazy" />
+                <img
+                  src="/images/collage8.png"
+                  alt="Event moment 2"
+                  loading="lazy"
+                />
                 <div className="image-hover">
                   <i className="icon-zoom"></i>
                 </div>
               </div>
               <div className="image-container">
-                <img src="/images/image4.png" alt="Event moment 3" loading="lazy" />
+                <img
+                  src="/images/image4.png"
+                  alt="Event moment 3"
+                  loading="lazy"
+                />
                 <div className="image-hover">
                   <i className="icon-zoom"></i>
                 </div>
               </div>
               <div className="image-container">
-                <img src="/images/image5.png" alt="Event moment 4" loading="lazy" />
+                <img
+                  src="/images/image5.png"
+                  alt="Event moment 4"
+                  loading="lazy"
+                />
                 <div className="image-hover">
                   <i className="icon-zoom"></i>
                 </div>
@@ -271,7 +297,6 @@ const Insights = () => {
             </div>
             {/* Removed "Explore Full Gallery" button */}
           </div>
-
 
           {/* Upcoming Events Block */}
           <div className="grid-item upcoming-events">
@@ -288,7 +313,8 @@ const Insights = () => {
                   <i className="icon-calendar"></i> June 28, 2025
                 </p>
                 <p className="event-description">
-                  Prepare for our next grand event featuring global thought leaders and groundbreaking discussions on future trends.
+                  Prepare for our next grand event featuring global thought
+                  leaders and groundbreaking discussions on future trends.
                 </p>
               </div>
               <button
@@ -304,28 +330,35 @@ const Insights = () => {
           <div className="grid-item photo-collage">
             <div className="section-header">
               <i className="icon-collage"></i>
-              <h3 className="section-title-animation">Our Journey in Pictures</h3>
+              <h3 className="section-title-animation">
+                Our Journey in Pictures
+              </h3>
               <p className="section-subtitle section-subtitle-animation">
                 A visual chronicle of our most impactful moments.
               </p>
             </div>
             <div className="collage-grid">
-              {photoCollageImages.slice(0, 9).map((img, index) => ( // Ensure only 9 images
-                <div key={`collage-${index}`} className="collage-item">
-                  <img
-                    src={img}
-                    alt={`Event moment ${index + 1}`}
-                    className="collage-image"
-                    loading="lazy"
-                  />
-                  <div
-                    className="collage-overlay"
-                    onClick={() => openSlideshow([img])} // Open slideshow with just this image
-                  >
-                    <span>View</span>
+              {photoCollageImages.slice(0, 9).map(
+                (
+                  img,
+                  index // Ensure only 9 images
+                ) => (
+                  <div key={`collage-${index}`} className="collage-item">
+                    <img
+                      src={img}
+                      alt={`Event moment ${index + 1}`}
+                      className="collage-image"
+                      loading="lazy"
+                    />
+                    <div
+                      className="collage-overlay"
+                      onClick={() => openSlideshow([img])} // Open slideshow with just this image
+                    >
+                      <span>View</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
             <div className="collage-footer collage-footer-animation">
               <p>Capturing the essence of excellence, one event at a time.</p>
@@ -364,7 +397,7 @@ const Insights = () => {
           </div>
         </div>
       )}
-      <Footer/>
+      <Footer />
     </>
   );
 };

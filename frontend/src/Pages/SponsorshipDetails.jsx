@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Components/Header";
-import Footer from "../components/Footer";
+import Footer from "../Components/Footer";
 import "../Styles/SponsorshipDetails.css"; // Assuming you have a CSS file for styling
 const SponsorshipDetails = () => {
   const [showContactInfo, setShowContactInfo] = useState(false);
