@@ -164,8 +164,17 @@ const HeroSection = () => {
               Nominate Now
             </a>
           </button>
+          
 
-          <button className="secondary-btn">Learn More</button>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScSKA_gpk0eFTB3dyqpwvG71skVLv6WY7iYWTYNOctrSnVLmg/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="secondary-btn">
+              Meet the Honorees
+            </button>
+          </a>
         </div>
       </div>
     </section>

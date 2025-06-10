@@ -229,10 +229,13 @@ body {
   animation: borderGlow 1.5s ease-in-out infinite alternate;
 }
 
-/* Image Styles */
+/* Image Styles - UPDATED FOR PERFECT CENTERING */
 .image-container {
   position: relative;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto; /* Changed: Added margin auto for horizontal centering */
+  display: flex; /* Added: Flex container for centering */
+  align-items: center; /* Added: Vertical centering */
+  justify-content: center; /* Added: Horizontal centering */
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--gold);
@@ -240,6 +243,8 @@ body {
   transition: all 0.5s var(--animation-elastic);
   background: var(--gradient-gold);
   padding: 3px;
+  width: 140px; /* Added: Fixed width for consistent sizing */
+  height: 140px; /* Added: Fixed height for consistent sizing */
 }
 .image-container::before {
   content: "";
@@ -262,6 +267,7 @@ body {
   object-fit: cover; border-radius: 50%;
   transition: all 0.5s ease;
   background-color: var(--black-light);
+  display: block; /* Added: Ensures proper display */
 }
 .executive-card:hover .executive-image {
   transform: scale(1.05);
@@ -381,7 +387,7 @@ body {
   overflow-y: auto;
 }
 .modal-close {
-  position:absolute; top:12px; right:12px;
+  position:absolute; top:1px; right:-11px;
   background: transparent; border: none;
   font-size: 1.5rem; color: var(--gold-light); cursor: pointer;
 }
@@ -390,10 +396,15 @@ body {
   background-color: var(--black); /* Added to ensure black background for content */
 }
 .modal-content img {
-  width:140px; height:140px;
+  width:140px;
+  height:140px;
   border-radius:50%;
   margin-bottom:1rem;
   border:3px solid var(--gold);
+  /* Added to center the image */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .modal-content h2 {
   color: var(--gold-bright);
@@ -415,6 +426,7 @@ body {
   .executive-image { width:110px; height:110px; }
   .executive-card { height:400px; }
   .card-inner { padding:2rem; }
+  .image-container { width: 120px; height: 120px; } /* Added: Responsive container sizing */
 }
 @media (max-width: 600px) {
   .executive-image { width:100px; height:100px; }
@@ -423,6 +435,7 @@ body {
   .main { font-size: clamp(2.5rem,12vw,4rem); }
   .subtitle::before, .subtitle::after { display:none; }
   .event-details { margin-top: -2rem; margin-bottom: 2rem; }
+  .image-container { width: 110px; height: 110px; } /* Added: Responsive container sizing */
 }
 @media (max-width: 400px) {
   .executive-image { width:90px; height:90px; }
@@ -431,6 +444,7 @@ body {
   .event-details { margin-top: -1.5rem; margin-bottom: 1.5rem; }
   .event-date { font-size: 1rem; }
   .event-location { font-size: 0.9rem; }
+  .image-container { width: 100px; height: 100px; } /* Added: Responsive container sizing */
 }
 
 /* Animations Keyframes */
