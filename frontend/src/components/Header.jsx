@@ -46,11 +46,11 @@ const Header = () => {
                 Insights
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/Super30" className={isActive("/Super30")}>
                 Our Super30
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
