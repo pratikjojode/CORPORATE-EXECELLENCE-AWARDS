@@ -17,11 +17,17 @@ const HomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    const timer = setTimeout(() => {
+    const showTimer = setTimeout(() => {
       setShowLocationPopup(true);
+
+      const closeTimer = setTimeout(() => {
+        setShowLocationPopup(false);
+      }, 1000);
+
+      return () => clearTimeout(closeTimer);
     }, 5000);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(showTimer);
   }, []);
 
   const closePopup = () => {
