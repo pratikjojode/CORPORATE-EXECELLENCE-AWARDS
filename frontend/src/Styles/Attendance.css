@@ -147,12 +147,13 @@ button:active {
   padding: 12px 15px;
   border-bottom: 1px solid #eee;
   text-align: left;
+  color: black;
   vertical-align: middle;
 }
 
 .attendance-table th {
   background-color: #007bff;
-  color: white;
+  color: black;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.9em;

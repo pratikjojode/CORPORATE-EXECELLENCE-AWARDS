@@ -1,0 +1,759 @@
+/* Import Premium Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap");
+
+/* CSS Variables for Enhanced Gold Theme */
+:root {
+  --gold: #ffd700;
+  --gold-dark: #b8860b;
+  --gold-light: #fff8dc;
+  --gold-accent: #daa520;
+  --gold-bright: #ffef94;
+  --black: #0a0a0a;
+  --black-light: #1a1a1a;
+  --black-medium: #2a2a2a;
+  --white: #ffffff;
+  --gray: #f5f5f5;
+  --shadow-light: rgba(255, 215, 0, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+  --shadow-glow: rgba(255, 215, 0, 0.6);
+  --gradient-gold: linear-gradient(
+    135deg,
+    #ffd700 0%,
+    #ffa500 35%,
+    #ff8c00 70%,
+    #ff6b35 100%
+  );
+  --gradient-gold-subtle: linear-gradient(135deg, #ffd700 0%, #ffef94 100%);
+  --gradient-dark: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a1a1a 50%,
+    #2a2a2a 100%
+  );
+  --gradient-card: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animation-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --animation-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--white);
+
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Particles Background */
+.background-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Executive Directory Container */
+.executive-directory {
+  min-height: 100vh;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+  background: var(--gradient-dark);
+}
+.executive-directory::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 215, 0, 0.08) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 215, 0, 0.06) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 40% 60%,
+      rgba(255, 215, 0, 0.04) 0%,
+      transparent 40%
+    );
+  pointer-events: none;
+  z-index: 0;
+  animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+/* Hero Section */
+.hero-section-super {
+  text-align: center;
+  padding: 5rem 2rem 6rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.hero-section-super::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.1) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: heroGlow 4s ease-in-out infinite alternate;
+}
+.main {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  letter-spacing: -2px;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+.main::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+  animation: underlineGlow 2s ease-in-out infinite alternate;
+}
+.main::before {
+  content: "✨";
+  position: absolute;
+  top: -20px;
+  right: -30px;
+  font-size: 2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+.subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 400;
+  color: var(--gold-light);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  position: relative;
+  animation: fadeInUp 1s ease-out 0.5s both;
+  font-family: "Inter", sans-serif;
+}
+.subtitle::before,
+.subtitle::after {
+  content: "◆";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 0.8rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+.subtitle::before {
+  left: -40px;
+}
+.subtitle::after {
+  right: -40px;
+}
+
+/* Event Details Section */
+.event-details {
+  text-align: center;
+  margin-top: -3rem; /* Adjust this value as needed to reduce space */
+  margin-bottom: 3rem; /* Space before the grid */
+  position: relative;
+  z-index: 1;
+}
+
+.event-date,
+.event-location {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+  opacity: 80; /* Hidden by default for animation */
+  animation: fadeInUp 1s ease-out 0.8s both; /* Apply fade in animation */
+}
+
+.event-location {
+  font-size: clamp(0.8rem, 1.8vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.7);
+  animation-delay: 1s; /* Stagger animation */
+}
+
+/* Executives Grid & Cards */
+.executives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 0 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.executive-card {
+  height: 420px;
+  perspective: 1200px;
+  animation: cardSlideIn 0.8s var(--animation-bounce) forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+.executive-card:nth-child(n) {
+  animation-delay: calc(0.1s * var(--i));
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-card);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 28px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.5s var(--animation-smooth);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.card-inner::before,
+.card-inner::after {
+  content: "";
+  position: absolute;
+  border-radius: 28px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+.card-inner::after {
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 30px;
+  transition: opacity 0.5s ease;
+}
+.executive-card:hover .card-inner {
+  transform: translateY(-20px) rotateX(8deg) rotateY(2deg);
+  box-shadow: 0 25px 50px var(--shadow-light), 0 15px 30px var(--shadow-dark),
+    0 0 0 1px rgba(255, 215, 0, 0.5);
+  border-color: var(--gold-bright);
+}
+.executive-card:hover .card-inner::before {
+  opacity: 0.12;
+}
+.executive-card:hover .card-inner::after {
+  opacity: 0.6;
+  animation: borderGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Image Styles - UPDATED FOR PERFECT CENTERING */
+.image-container {
+  position: relative;
+  margin: 0 auto 2rem auto; /* Changed: Added margin auto for horizontal centering */
+  display: flex; /* Added: Flex container for centering */
+  align-items: center; /* Added: Vertical centering */
+  justify-content: center; /* Added: Horizontal centering */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--gold);
+  box-shadow: 0 12px 40px var(--shadow-light);
+  transition: all 0.5s var(--animation-elastic);
+  background: var(--gradient-gold);
+  padding: 3px;
+  width: 140px; /* Added: Fixed width for consistent sizing */
+  height: 140px; /* Added: Fixed height for consistent sizing */
+}
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.executive-card:hover .image-container {
+  transform: scale(1.15) rotateY(5deg);
+  box-shadow: 0 20px 60px var(--shadow-glow);
+  animation: imageFloat 3s ease-in-out infinite;
+}
+.executive-card:hover .image-container::before {
+  opacity: 0.7;
+  animation: ringGlow 2s ease-in-out infinite;
+}
+.executive-image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  background-color: var(--black-light);
+  display: block; /* Added: Ensures proper display */
+}
+.executive-card:hover .executive-image {
+  transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.05);
+}
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-gold-subtle);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 50%;
+  mix-blend-mode: overlay;
+}
+.executive-card:hover .image-overlay {
+  opacity: 0.2;
+}
+
+/* Text Info Styles */
+.executive-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  position: relative;
+}
+.executive-name,
+.executive-title,
+.executive-company {
+  transition: all 0.4s var(--animation-smooth);
+}
+.executive-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  position: relative;
+}
+.executive-name::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-gold);
+  transition: transform 0.4s ease;
+  border-radius: 1px;
+}
+.executive-card:hover .executive-name {
+  color: var(--gold-bright);
+  transform: translateY(-3px);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+.executive-card:hover .executive-name::after {
+  transform: translateX(-50%) scaleX(1);
+}
+.executive-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  font-family: "Inter", sans-serif;
+}
+.executive-card:hover .executive-title {
+  color: var(--gold-bright);
+  transform: translateY(-2px);
+}
+.executive-company {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  font-family: "Inter", sans-serif;
+}
+.executive-card:hover .executive-company {
+  color: rgba(255, 255, 255, 0.98);
+  transform: translateY(-1px);
+}
+
+/* Card Shine & Status */
+.card-shine {
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 45%,
+    rgba(255, 215, 0, 0.1) 50%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  transition: transform 1s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+.executive-card:hover .card-shine {
+  opacity: 1;
+  transform: rotate(45deg) translate(50%, 50%);
+}
+.status-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+.executive-card:hover .status-indicator {
+  opacity: 1;
+}
+
+/* Loading Shimmer for placeholder */
+.loading-shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Modal Overlay */
+.exec-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+.exec-modal {
+  background: var(--black-medium);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 90%;
+  color: var(--white);
+  position: relative;
+  animation: modalZoom 0.4s ease-out forwards;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-close {
+  position: absolute;
+  top: 1px;
+  right: -11px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  cursor: pointer;
+}
+.modal-content {
+  text-align: center;
+  background-color: var(
+    --black
+  ); /* Added to ensure black background for content */
+}
+.modal-content img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--gold);
+  /* Added to center the image */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.modal-content h2 {
+  color: var(--gold-bright);
+  margin-bottom: 0.5rem;
+}
+.modal-content h4 {
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+}
+.modal-content p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive cards */
+@media (max-width: 1200px) {
+  .executives-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+@media (max-width: 900px) {
+  .executive-image {
+    width: 110px;
+    height: 110px;
+  }
+  .executive-card {
+    height: 400px;
+  }
+  .card-inner {
+    padding: 2rem;
+  }
+  .image-container {
+    width: 120px;
+    height: 120px;
+  } /* Added: Responsive container sizing */
+}
+@media (max-width: 600px) {
+  .executive-image {
+    width: 100px;
+    height: 100px;
+  }
+  .executive-card {
+    height: 380px;
+  }
+  .executives-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  .main {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+  .subtitle::before,
+  .subtitle::after {
+    display: none;
+  }
+  .event-details {
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+  }
+  .image-container {
+    width: 110px;
+    height: 110px;
+  } /* Added: Responsive container sizing */
+}
+@media (max-width: 400px) {
+  .executive-image {
+    width: 90px;
+    height: 90px;
+  }
+  .executive-card {
+    height: 360px;
+  }
+  .card-inner {
+    padding: 1.5rem;
+  }
+  .event-details {
+    margin-top: -1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .event-date {
+    font-size: 1rem;
+  }
+  .event-location {
+    font-size: 0.9rem;
+  }
+  .image-container {
+    width: 100px;
+    height: 100px;
+  } /* Added: Responsive container sizing */
+}
+
+/* Animations Keyframes */
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg);
+  }
+}
+@keyframes backgroundPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+@keyframes heroGlow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.2;
+  }
+}
+@keyframes titleGlow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  }
+}
+@keyframes underlineGlow {
+  from {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+}
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+@keyframes borderGlow {
+  from {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+@keyframes imageFloat {
+  0%,
+  100% {
+    transform: scale(1.15) rotateY(5deg) translateY(0);
+  }
+  50% {
+    transform: scale(1.15) rotateY(5deg) translateY(-5px);
+  }
+}
+@keyframes ringGlow {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1.05) rotate(360deg);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+@keyframes modalZoom {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
