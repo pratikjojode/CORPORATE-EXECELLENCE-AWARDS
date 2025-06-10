@@ -151,7 +151,7 @@ const HeroSection = () => {
           />
         </div>
         <div className="event-details">
-          <p>28th JUNE, 2025 | Friday</p>
+          <p>28th JUNE, 2025 | Saturday</p>
           <p>Morning 9 AM to Afternoon 4PM</p>
         </div>
         <div className="cta-buttons">
@@ -164,16 +164,13 @@ const HeroSection = () => {
               Nominate Now
             </a>
           </button>
-          
 
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScSKA_gpk0eFTB3dyqpwvG71skVLv6WY7iYWTYNOctrSnVLmg/viewform"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="secondary-btn">
-              Meet the Honorees
-            </button>
+            <button className="secondary-btn">Meet the Honorees</button>
           </a>
         </div>
       </div>
