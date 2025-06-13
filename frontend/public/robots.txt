@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Allow: /assets/corporate2.jpg
+Allow: /assets/corporate2.png
 Disallow: /adminLogin
 Disallow: /admin-dashboard/
 Sitemap: https://www.corporateexcellenceawards.com/sitemap.xml
